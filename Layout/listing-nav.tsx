@@ -17,6 +17,8 @@ import { Box } from "@mui/system";
 import { Yellowtail } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
+import Options from "./UI-Components/ListingNav/option";
+
 // import InputAdornment from "@mui/material/InputAdornment";
 
 interface props {
@@ -60,7 +62,6 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
   }, []);
   return (
     <Box sx={{ display: "flex" }}>
-      {/* <Box>{children}</Box> */}
       <Box
         sx={{
           width: "260px",
@@ -85,16 +86,6 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
               </InputAdornment>
             ),
           }}
-          // sx={{
-          //   borderRadius: "0",
-          //   border: 0,
-          //   border: "none",
-
-          //   // py: 3,
-          //   // height: "310px",
-
-          //   width: "280px",
-          // }}
           onChange={(event: any) => setQuery(event.target.value)}
         />
         <Box sx={{ mt: 4, pl: "25px" }}>
@@ -107,7 +98,9 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
             >
               {data}
             </Typography>
-            <Typography sx={{ fontSize: "13px", fontWeight: "500" }}>
+            <Typography
+              sx={{ fontSize: "13px", fontWeight: "500", color: "#000000A8" }}
+            >
               15 Members
             </Typography>
           </Stack>
@@ -134,27 +127,13 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
               }
             })
             .map((text, index) => (
-              <ListItem
-                sx={{
-                  backgroundColor:
-                    select == text ? "rgba(60, 16, 83, 0.06)" : null,
-                }}
-                key={text}
-                disablePadding
-              >
-                <ListItemButton onClick={() => stateSetter(text)}>
-                  <ListItemIcon>
-                    {" "}
-                    {/* <Avatar sx={{ bgcolor: randomColor }}>
-                      {text.charAt(0)}
-                    </Avatar> */}
-                    <Avatar sx={{ bgcolor: match[index].color }}>
-                      {text.charAt(0)}
-                    </Avatar>
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
+              <Options
+                select={select}
+                text={text}
+                index={index}
+                stateSetter={stateSetter}
+                match={match}
+              />
             ))}
         </List>
       </Box>

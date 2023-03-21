@@ -14,19 +14,13 @@ Page.getLayout = function getLayout(page: ReactElement) {
   const [select, setSelect] = useState("All password");
   const selectData = (data: any) => {
     setSelect(data);
-    console.log(select);
   };
   const [specific, setSpecific] = useState("Google");
   const selectspecific = (data: any) => {
-    console.log(data);
     setSpecific(data);
   };
-  useEffect(() => {
-    console.log(specific);
-  }, [specific]);
-  useEffect(() => {
-    console.log(select);
-  }, [select]);
+  useEffect(() => {}, [specific]);
+  useEffect(() => {}, [select]);
   const tableData = [
     {
       company: "Adobe design suite",
@@ -62,7 +56,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
       token: "token",
       link: "https://www.figma.com",
       tags: ["admin", "git"],
-      color: "orange",
+      color: "#edd869",
     },
     {
       company: "Storyblocks",

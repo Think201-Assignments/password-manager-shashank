@@ -4,7 +4,6 @@ interface props {
   data: any;
 }
 const SideIcons: React.FC<props> = ({ data }) => {
-  console.log(data);
   return (
     <>
       <Box

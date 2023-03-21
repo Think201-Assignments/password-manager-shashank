@@ -6,7 +6,7 @@ interface props {
   sx: any;
 }
 
-const PrimaryButton: React.FC<props> = ({ children, sx }) => {
+const PrimaryButton: React.FC<props> = ({ children, sx, OnClickEvent }) => {
   return (
     <Button
       sx={{
@@ -17,6 +17,7 @@ const PrimaryButton: React.FC<props> = ({ children, sx }) => {
         background: "linear-gradient(90deg, #4E54C8 0%, #8F94FB 100%)",
         ...sx,
       }}
+      onClick={() => OnClickEvent()}
     >
       {children}
     </Button>

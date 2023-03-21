@@ -20,19 +20,13 @@ export default function Home() {
   const [select, setSelect] = useState("All password");
   const selectData = (data: any) => {
     setSelect(data);
-    console.log(select);
   };
   const [specific, setSpecific] = useState("Google");
   const selectspecific = (data: any) => {
-    console.log(data);
     setSpecific(data);
   };
-  useEffect(() => {
-    console.log(specific);
-  }, [specific]);
-  useEffect(() => {
-    console.log(select);
-  }, [select]);
+  useEffect(() => {}, [specific]);
+  useEffect(() => {}, [select]);
   const tableData = [
     {
       company: "Adobe design suite",
@@ -79,7 +73,15 @@ export default function Home() {
   // const List: any | any = [];
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Box sx={{ display: "flex", fontFamily: "Montserrat" }}>
         <SideNav />
         <VaultNav selectData={selectData} select={select} />
         <ListingNav selectspecific={selectspecific} data={select} />

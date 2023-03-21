@@ -12,7 +12,7 @@ import { AppType } from "next/app";
 import theme, { montserrat } from "../styles/theme";
 import createEmotionCache from "../styles/createEmotionCache";
 import { MyAppProps } from "./_app";
-import { Montserrat } from "next/font/google";
+// import { Montserrat } from "next/font/google";
 
 interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: JSX.Element[];
@@ -23,9 +23,16 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
     // console.log(Montserrat);
   }
   return (
-    <Html lang="en" className={montserrat.className}>
+    <Html lang="en" className={""}>
       <Head>
         {/* PWA primary color */}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap"
+          rel="stylesheet"
+        />
 
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.ico" />

@@ -22,14 +22,8 @@ interface props {
 }
 
 const VaultNav: React.FC<props> = ({ selectData, select }) => {
-  // const selectData = (data: any) => {
-  //   selectDat ? selectDat(data) : console.log("clicked");
-  // };
   const drawerWidth = 240;
-  // const [store, setStore] = useState();
-  // store ? selectData(store) : null;
 
-  //   const [select, setSelect] = useState("All password");
   const data = [
     { text: "All password", link: "/all-password" },
     { text: "Favourites", link: "/favourites" },
@@ -42,18 +36,25 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            // justifyContent: "center",
             pt: 4,
             height: "9vh",
           }}
         >
           <Stack>
             <VaultHeader
-              sx={{ display: "flex", fontSize: "19px", fontWeight: "700" }}
+              sx={{ display: "flex", fontSize: "20px", fontWeight: "700" }}
               heading={"Think201 Vault"}
             />
-            <Typography sx={{ fontSize: "13px", fontWeight: "500" }}>
-              15 Members
+            <Typography
+              sx={{
+                fontSize: "13px",
+                fontWeight: "500",
+                pl: 4,
+                color: "#000000A8",
+              }}
+            >
+              21 Members
             </Typography>
           </Stack>
         </Box>
@@ -96,8 +97,10 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
                         select == text ? "rgba(60, 16, 83, 0.06)" : null,
                     }}
                   >
-                    <ListItemIcon></ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText
+                      primary={text}
+                      sx={{ pl: 2, color: "#000000DE" }}
+                    />
                   </ListItemButton>
                 </ListItem>
               </Link>
@@ -107,16 +110,16 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
             <Typography
               sx={{
                 mt: 3,
-                fontSize: "14px",
-                fontWeight: "500",
+                fontSize: "10px",
+                fontWeight: "700",
                 color: "#00000054",
               }}
             >
-              User Management
+              USER MANAGEMENT
             </Typography>
           </Box>
           <List>
-            {["All password", "Favourites"].map((text, index) => (
+            {["user"].map((text, index) => (
               <Link
                 href={`/user-management`}
                 style={{
@@ -137,8 +140,7 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
                   <ListItemButton
                     sx={{ height: "16px", fontWeight: "500px", py: 2 }}
                   >
-                    <ListItemIcon></ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={text} sx={{ pl: 2 }} />
                   </ListItemButton>
                 </ListItem>
               </Link>

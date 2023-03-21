@@ -6,33 +6,29 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 interface props {
-  Title: React.ReactNode;
-  children: React.ReactNode;
+  Title: any;
+  children?: React.ReactNode;
+  handleClose: Function;
+  open: any;
 }
-const CustomDialogBox: React.FC<props> = ({ children, Title }) => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+const CustomDialogBox: React.FC<props> = ({
+  children,
+  Title,
+  handleClose,
+  open,
+}) => {
   return (
     <Dialog
       open={open}
-      onClose={handleClose}
+      onClose={() => handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">{Title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Disagree</Button>
-        <Button onClick={handleClose} autoFocus>
-          Agree
+        <Button variant="outlined" sx={{ mr: 2 }} onClick={() => handleClose()}>
+          Cancel
         </Button>
       </DialogActions>
     </Dialog>

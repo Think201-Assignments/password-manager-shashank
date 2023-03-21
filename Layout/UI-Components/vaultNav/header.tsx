@@ -5,8 +5,9 @@ const VaultHeader = ({ heading }: any) => {
   return (
     <Typography
       sx={{
-        fontSize: "19px",
-        fontWeight: 700,
+        fontSize: "21px",
+        fontWeight: 900,
+        pl: 4,
       }}
     >
       {heading}
