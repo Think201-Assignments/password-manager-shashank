@@ -13,6 +13,7 @@ import { LineAxisOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
 import { Montserrat } from "next/font/google";
+import { tableData } from "./containerData";
 
 const inter = Montserrat({ subsets: ["latin"] });
 // montserrat
@@ -27,48 +28,7 @@ export default function Home() {
   };
   useEffect(() => {}, [specific]);
   useEffect(() => {}, [select]);
-  const tableData = [
-    {
-      company: "Adobe design suite",
-      login: "thepeopleteam@think201.com",
-      password: "45_6tg5d%3f01d",
-      token: "Adobedesign",
-      link: "https://www.w3schools.com/js/js_loop_for.asp",
-      tags: ["admin", "git"],
-    },
-    {
-      company: "Milan",
-      login: "Dummy@123",
-      password: "45_6tg5d%3f01d",
-      token: "Milan",
-      link: "https://mui.com/material-ui/react-text-field/.asp",
-      tags: ["admin", "git"],
-    },
-    {
-      company: "Google",
-      login: "Dummy@google",
-      password: "fdfdfdf",
-      token: "Null",
-      link: "dummyjson.com",
-      tags: ["admin", "git"],
-    },
-    {
-      company: "Figma",
-      login: "thepeopleteam@think201.com",
-      password: "45_6tg5d%3f01d",
-      token: "token",
-      link: "https://www.figma.com",
-      tags: ["admin", "git"],
-    },
-    {
-      company: "Storyblocks",
-      login: "thepeopleteam@think201.com",
-      password: "password",
-      token: "something",
-      link: "https://www.figma.com",
-      tags: ["admin", "git"],
-    },
-  ];
+
   const arr = tableData.filter((d) => d.company == specific);
   // const List: any | any = [];
   return (

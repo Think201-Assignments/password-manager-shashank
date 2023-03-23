@@ -122,7 +122,7 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
             .filter((data) => {
               if (query === "") {
                 return data;
-              } else if (data.includes(query)) {
+              } else if (data.toLowerCase().includes(query.toLowerCase())) {
                 return data;
               }
             })
