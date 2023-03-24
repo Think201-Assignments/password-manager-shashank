@@ -1,3 +1,11 @@
+import React from "react";
+
+const napp = () => {
+  return <div>app</div>;
+};
+
+export default napp;
+
 // app.tsx
 // import * as React from "react";
 // import Head from "next/head";

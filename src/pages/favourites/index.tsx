@@ -8,6 +8,7 @@ import Content from "../data";
 import { NextPageWithLayout } from "../_app";
 import { tableData } from "../containerData";
 
+
 const Page: NextPageWithLayout = () => {
   return <Box> </Box>;
 };

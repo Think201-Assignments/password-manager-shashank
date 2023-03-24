@@ -14,9 +14,11 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
+    "@types/gtag.js": "0.0.12",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "cookies-next": "^2.1.1",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "formik": "^2.2.9",
@@ -24,8 +26,13 @@
     "framer-motion": "^10.8.4",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-color": "^2.19.3",
+    "react-cookie-consent": "^8.0.1",
     "react-dom": "18.2.0",
     "typescript": "4.9.5",
     "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/react-color": "^3.0.6"
   }
 }
