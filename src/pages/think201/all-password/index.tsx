@@ -7,7 +7,7 @@ import VaultNav from "../../../../layout/vaultNav/vault-nav";
 import Content from "../../../componenets/contentBox";
 import { NextPageWithLayout } from "../../_app";
 
-import { tableData } from "../../containerData";
+import { tableData } from "../../../componenets/dummydata/containerData";
 import ContentNav from "../../../../layout/contentNav/content-nav";
 import PageWrapper from "@/componenets/animate/page-wrapper";
 

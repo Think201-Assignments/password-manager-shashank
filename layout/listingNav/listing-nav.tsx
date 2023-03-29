@@ -1,4 +1,5 @@
 import {
+  Hidden,
   InputAdornment,
   List,
   Stack,
@@ -11,9 +12,9 @@ import { Yellowtail } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 
-import { allpassword, design } from "@/pages/containerData";
 import Options from "../components/listingNav/option";
 import { motion } from "framer-motion";
+import { allpassword, design } from "@/componenets/dummydata/containerData";
 
 // import InputAdornment from "@mui/material/InputAdornment";
 
@@ -44,6 +45,7 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
         sx={{
           width: "260px",
           height: "100vh",
+
           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.12);",
         }}
       >
@@ -94,7 +96,10 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
             {data === "All password" ? "All Password" : data + " " + "Password"}
           </Typography>
         </Box>
-        <List key={1}>
+        <List
+          sx={{ height: "79vh", overflowY: "auto", overflowX: "hidden" }}
+          key={1}
+        >
           {(data == "All password" ? allpassword : design)
 
             .filter((data) => {

@@ -6,7 +6,7 @@ import ContentNav from "../../../../layout/contentNav/content-nav";
 import ListingNav from "../../../../layout/listingNav/listing-nav";
 import SideNav from "../../../../layout/sideNav/side-nav";
 import VaultNav from "../../../../layout/vaultNav/vault-nav";
-import { tableData } from "../../containerData";
+import { tableData } from "../../../componenets/dummydata/containerData";
 
 const Page: NextPageWithLayout = () => {
   return <Box> </Box>;

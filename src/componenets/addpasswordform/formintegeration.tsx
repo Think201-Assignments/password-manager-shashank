@@ -5,7 +5,7 @@ import { SimpleFormBridged } from "./simpleForm";
 import { initialValues } from "./initialvalues";
 import { validationSchema } from "./validation.js";
 import { handleSubmit } from "./handleSubmit";
-import { allpassword, tableData } from "@/pages/containerData";
+import { allpassword, tableData } from "../dummydata/containerData";
 
 interface props {
   handleClose: Function;

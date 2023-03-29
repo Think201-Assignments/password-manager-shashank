@@ -13,7 +13,7 @@ import { LineAxisOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
 import { Montserrat } from "next/font/google";
-import { tableData } from "./containerData";
+import { tableData } from "../componenets/dummydata/containerData";
 
 const inter = Montserrat({ subsets: ["latin"] });
 // montserrat
