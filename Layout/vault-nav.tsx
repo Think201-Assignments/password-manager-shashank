@@ -16,6 +16,7 @@ import { deepOrange } from "@mui/material/colors";
 import Link from "next/link";
 import React, { useState } from "react";
 import VaultHeader from "./UI-Components/vaultNav/header";
+import VaultOptions from "./UI-Components/vaultNav/options";
 interface props {
   selectData?: any;
   select?: any;
@@ -66,44 +67,12 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
           }}
         >
           <List sx={{ pt: 9 }}>
-            {data.map(({ text, link }, index) => (
-              <Link
-                href={`${link}`}
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                <ListItem
-                  sx={{
-                    height: "16px",
-                    fontWeight: "500px",
-                    py: 2,
-
-                    backgroundColor:
-                      select == text ? "rgba(60, 16, 83, 0.06)" : null,
-                  }}
-                  key={text}
-                  disablePadding
-                >
-                  <ListItemButton
-                    onClick={() => selectData(text)}
-                    sx={{
-                      height: "16px",
-                      fontWeight: "500px",
-                      left: 0.1,
-                      py: 2,
-                      backgroundColor:
-                        select == text ? "rgba(60, 16, 83, 0.06)" : null,
-                    }}
-                  >
-                    <ListItemText
-                      primary={text}
-                      sx={{ pl: 2, color: "#000000DE" }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              </Link>
+            {data.map((data) => (
+              <VaultOptions
+                data={data}
+                select={select}
+                selectData={selectData}
+              />
             ))}
           </List>
           <Box sx={{ pl: 4 }}>
@@ -119,31 +88,8 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
             </Typography>
           </Box>
           <List>
-            {["user"].map((text, index) => (
-              <Link
-                href={`/user-management`}
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                <ListItem
-                  sx={{
-                    height: "16px",
-                    fontWeight: "500px",
-                    py: 2,
-                    textDecoration: "none",
-                  }}
-                  key={text}
-                  disablePadding
-                >
-                  <ListItemButton
-                    sx={{ height: "16px", fontWeight: "500px", py: 2 }}
-                  >
-                    <ListItemText primary={text} sx={{ pl: 2 }} />
-                  </ListItemButton>
-                </ListItem>
-              </Link>
+            {[{ text: "user", link: "/user-management" }].map((data) => (
+              <VaultOptions data={data} />
             ))}
           </List>
         </Box>

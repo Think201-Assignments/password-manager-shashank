@@ -89,8 +89,6 @@ const ContentNav: React.FC<props> = ({ children }) => {
         Title={"Add New Password"}
         open={open}
       >
-        {/* <EditForm /> */}
-        {/* <SignupForm /> */}
         <SimpleFormContainer handleClose={handleClose} />
       </CustomDialogBox>
     </>

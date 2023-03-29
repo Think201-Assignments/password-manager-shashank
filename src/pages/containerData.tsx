@@ -45,3 +45,15 @@ export const tableData = [
     color: "",
   },
 ];
+export const allpassword = [
+  { text: "Google", color: "green" },
+  { text: "Milan", color: "purple" },
+  { text: "Figma", color: "#EDD869" },
+  { text: "Adobe design suite", color: "red" },
+  { text: "Storyblocks", color: "" },
+];
+export const design = [
+  { text: "Figma", color: "#EDD869" },
+  { text: "Adobe design suite", color: "red" },
+  { text: "Storyblocks", color: "" },
+];

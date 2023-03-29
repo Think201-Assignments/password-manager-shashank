@@ -32,10 +32,7 @@ const Options: React.FC<props> = ({
       <ListItemButton onClick={() => stateSetter(text)}>
         <ListItemIcon>
           {" "}
-          {/* <Avatar sx={{ bgcolor: randomColor }}>
-                      {text.charAt(0)}
-                    </Avatar> */}
-          <Avatar sx={{ bgcolor: match[index].color }}>{text.charAt(0)}</Avatar>
+          <Avatar sx={{ bgcolor: match.color }}>{text.charAt(0)}</Avatar>
         </ListItemIcon>
         <ListItemText sx={{ color: "#000000DE" }} primary={text} />
       </ListItemButton>

@@ -10,18 +10,12 @@ import {
   TableRow,
   //   Table,
 } from "@mui/material";
-import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
-import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
-import { setConstantValue } from "typescript";
-import { table } from "console";
-// import Visibility from "@material-ui/icons/Visibility";
+
 import ContentCopySharpIcon from "@mui/icons-material/ContentCopySharp";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
+
 import React, { useEffect, useRef, useState } from "react";
 interface props {
   tableData: any;
@@ -31,9 +25,6 @@ const DataTable: React.FC<props> = ({ tableData }) => {
   console.log(tableData);
   const [passwordstatus, setPasswordStatus] = useState(false);
   const [tokenstatus, setTokenStatus] = useState(false);
-  const [value, setValue] = useState("");
-  const [copySuccess, setCopySuccess] = useState("");
-  const textAreaRef = useRef(null);
 
   const [open, setOpen] = useState(false);
   const handleClick = (data: any) => {
@@ -133,8 +124,7 @@ const DataTable: React.FC<props> = ({ tableData }) => {
             </IconButton>
           </TableCell>
         </TableRow>
-        {/* {password} */}
-        {/* {token} */}
+
         <TableRow
           sx={{
             "&:last-child td, &:last-child th": { border: 0 },

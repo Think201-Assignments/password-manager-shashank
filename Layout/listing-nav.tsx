@@ -1,13 +1,6 @@
-import { AccountCircle, Password } from "@mui/icons-material";
-
 import {
-  Avatar,
   InputAdornment,
   List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Stack,
   TextField,
   Typography,
@@ -18,6 +11,7 @@ import { Yellowtail } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import Options from "./UI-Components/ListingNav/option";
+import { allpassword, design } from "@/pages/containerData";
 
 // import InputAdornment from "@mui/material/InputAdornment";
 
@@ -26,39 +20,22 @@ interface props {
   data?: any;
   selectspecific: any;
 }
-const design = ["Figma", "Adobe design suite", "Storyblocks"];
-const allpassword = [
-  "Google",
-  "Milan",
-  "Figma",
-  "Adobe design suite",
-  "Storyblocks",
-];
 
 const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
   const [select, setSelect] = useState("");
 
   const [query, setQuery] = useState("");
-  function randomColor() {
-    let hex = Math.floor(Math.random() * 0xffffff);
-    let color = "#" + hex.toString(16);
 
-    return color;
-  }
-  const match = [
-    { text: "Google", color: "green" },
-    { text: "Milan", color: "purple" },
-    { text: "Figma", color: "#EDD869" },
-    { text: "Adobe design suite", color: "red" },
-    { text: "Storyblocks", color: "" },
-  ];
   const stateSetter = (data: any) => {
     setSelect(data);
     selectspecific(data);
   };
   useEffect(() => {
-    data == "All password" ? setSelect(allpassword[0]) : setSelect(design[0]);
+    data === "All password"
+      ? setSelect(allpassword[0].text)
+      : setSelect(design[0].text);
     query;
+    // console.log(allpassword);
   }, []);
   return (
     <Box sx={{ display: "flex" }}>
@@ -70,7 +47,6 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
         }}
       >
         <TextField
-          // variant="standard"
           sx={{
             "& fieldset": { border: "none" },
             height: "61px",
@@ -119,20 +95,23 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
         </Box>
         <List>
           {(data == "All password" ? allpassword : design)
+
             .filter((data) => {
               if (query === "") {
                 return data;
-              } else if (data.toLowerCase().includes(query.toLowerCase())) {
+              } else if (
+                data.text.toLowerCase().includes(query.toLowerCase())
+              ) {
                 return data;
               }
             })
-            .map((text, index) => (
+            .map((data, index) => (
               <Options
                 select={select}
-                text={text}
+                text={data.text}
                 index={index}
                 stateSetter={stateSetter}
-                match={match}
+                match={data}
               />
             ))}
         </List>
