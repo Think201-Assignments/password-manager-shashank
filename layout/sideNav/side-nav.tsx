@@ -3,7 +3,7 @@ import { display } from "@mui/system";
 import React from "react";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { CollectionsBookmarkRounded } from "@mui/icons-material";
-import SideIcons from "./UI-Components/sideNav/Icon";
+import SideIcons from "../components/sideNav/Icon";
 
 interface props {
   children?: React.ReactNode;

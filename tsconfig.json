@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/componenets/ContentBox/EditFormFormik/validation.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/componenets/addpasswordform/validation.js"],
   "exclude": ["node_modules"]
 }

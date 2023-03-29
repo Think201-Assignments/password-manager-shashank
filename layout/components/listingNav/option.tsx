@@ -23,16 +23,19 @@ const Options: React.FC<props> = ({
 }) => {
   return (
     <ListItem
+      key={text}
       sx={{
         backgroundColor: select == text ? "rgba(60, 16, 83, 0.06)" : null,
       }}
-      key={index}
+      // key={index}
       disablePadding
     >
-      <ListItemButton onClick={() => stateSetter(text)}>
-        <ListItemIcon>
+      <ListItemButton key={text} onClick={() => stateSetter(text)}>
+        <ListItemIcon key={text}>
           {" "}
-          <Avatar sx={{ bgcolor: match.color }}>{text.charAt(0)}</Avatar>
+          <Avatar key={text} sx={{ bgcolor: match.color }}>
+            {text.charAt(0)}
+          </Avatar>
         </ListItemIcon>
         <ListItemText sx={{ color: "#000000DE" }} primary={text} />
       </ListItemButton>

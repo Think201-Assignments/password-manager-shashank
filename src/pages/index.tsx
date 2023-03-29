@@ -4,11 +4,11 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { Avatar, Box, Grid, Typography } from "@mui/material";
 
-import ListingNav from "../../Layout/listing-nav";
-import SideNav from "../../Layout/side-nav";
-import VaultNav from "../../Layout/vault-nav";
-import ContentNav from "../../Layout/content-nav";
-import Content from "./data";
+import ListingNav from "../../layout/listingNav/listing-nav";
+import SideNav from "../../layout/sideNav/side-nav";
+import VaultNav from "../../layout/vaultNav/vault-nav";
+import ContentNav from "../../layout/contentNav/content-nav";
+import Content from "../componenets/contentBox";
 import { LineAxisOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";

@@ -10,8 +10,10 @@ import { Box } from "@mui/system";
 import { Yellowtail } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
-import Options from "./UI-Components/ListingNav/option";
+
 import { allpassword, design } from "@/pages/containerData";
+import Options from "../components/listingNav/option";
+import { motion } from "framer-motion";
 
 // import InputAdornment from "@mui/material/InputAdornment";
 
@@ -35,7 +37,6 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
       ? setSelect(allpassword[0].text)
       : setSelect(design[0].text);
     query;
-    // console.log(allpassword);
   }, []);
   return (
     <Box sx={{ display: "flex" }}>
@@ -93,7 +94,7 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
             {data === "All password" ? "All Password" : data + " " + "Password"}
           </Typography>
         </Box>
-        <List>
+        <List key={1}>
           {(data == "All password" ? allpassword : design)
 
             .filter((data) => {

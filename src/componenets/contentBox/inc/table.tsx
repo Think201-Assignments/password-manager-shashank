@@ -22,13 +22,11 @@ interface props {
 }
 
 const DataTable: React.FC<props> = ({ tableData }) => {
-  console.log(tableData);
   const [passwordstatus, setPasswordStatus] = useState(false);
   const [tokenstatus, setTokenStatus] = useState(false);
 
   const [open, setOpen] = useState(false);
   const handleClick = (data: any) => {
-    console.log(data);
     setOpen(true);
     navigator.clipboard.writeText(data);
   };
@@ -47,16 +45,22 @@ const DataTable: React.FC<props> = ({ tableData }) => {
       />
       <TableBody>
         {/* {login} */}
-        <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        <TableRow
+          sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+          key={"CompanyName"}
+        >
           <TableCell
             sx={{ color: "rgba(0, 0, 0, 0.54)" }}
             component="th"
             scope="row"
+            key={"login"}
           >
             login
           </TableCell>
-          <TableCell align="left">{tableData?.login}</TableCell>
-          <TableCell align="right">
+          <TableCell key={"loginData"} align="left">
+            {tableData?.login}
+          </TableCell>
+          <TableCell key="login" align="right">
             {" "}
             <IconButton onClick={() => handleClick(tableData?.login)}>
               {" "}
@@ -66,16 +70,24 @@ const DataTable: React.FC<props> = ({ tableData }) => {
         </TableRow>
         {/* {login} */}
         {/* {password} */}
-        <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        <TableRow
+          key={"password"}
+          sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+        >
           <TableCell
             sx={{ color: "rgba(0, 0, 0, 0.54)", height: "65px" }}
             component="th"
             scope="row"
+            key={"passwordLabel"}
           >
             password
           </TableCell>
 
-          <TableCell align="left" sx={{ height: "65px" }}>
+          <TableCell
+            key={"passwordFunctionalPart"}
+            align="left"
+            sx={{ height: "65px" }}
+          >
             <OutlinedInput
               sx={{
                 borderRadius: 0,

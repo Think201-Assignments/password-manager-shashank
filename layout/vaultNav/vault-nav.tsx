@@ -15,8 +15,8 @@ import {
 import { deepOrange } from "@mui/material/colors";
 import Link from "next/link";
 import React, { useState } from "react";
-import VaultHeader from "./UI-Components/vaultNav/header";
-import VaultOptions from "./UI-Components/vaultNav/options";
+import VaultHeader from "../components/vaultNav/header";
+import VaultOptions from "../components/vaultNav/options";
 interface props {
   selectData?: any;
   select?: any;
@@ -26,9 +26,9 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
   const drawerWidth = 240;
 
   const data = [
-    { text: "All password", link: "/all-password" },
-    { text: "Favourites", link: "/favourites" },
-    { text: "Design", link: "/all-password" },
+    { text: "All password", link: "/think201/all-password" },
+    { text: "Favourites", link: "/think201/favourites" },
+    { text: "Design", link: "/think201/all-password" },
   ];
 
   return (
@@ -67,8 +67,10 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
           }}
         >
           <List sx={{ pt: 9 }}>
-            {data.map((data) => (
+            {data.map((data, index) => (
               <VaultOptions
+                key={index}
+                index={index}
                 data={data}
                 select={select}
                 selectData={selectData}
@@ -88,9 +90,11 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
             </Typography>
           </Box>
           <List>
-            {[{ text: "user", link: "/user-management" }].map((data) => (
-              <VaultOptions data={data} />
-            ))}
+            {[{ text: "user", link: "/think201/user-management" }].map(
+              (data, index) => (
+                <VaultOptions index={index} data={data} />
+              )
+            )}
           </List>
         </Box>
       </Box>

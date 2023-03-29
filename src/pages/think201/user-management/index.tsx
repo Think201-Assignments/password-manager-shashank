@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
-import SideNav from "../../../Layout/side-nav";
-import VaultNav from "../../../Layout/vault-nav";
-import { NextPageWithLayout } from "../_app";
+import SideNav from "../../../../layout/sideNav/side-nav";
+
+import VaultNav from "../../../../layout/vaultNav/vault-nav";
+import { NextPageWithLayout } from "../../_app";
 
 const Page: NextPageWithLayout = () => {
   return (

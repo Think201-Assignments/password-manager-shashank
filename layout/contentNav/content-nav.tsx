@@ -1,11 +1,11 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
-import PrimaryButton from "./UI-Components/contentNav/primary-Button";
+import PrimaryButton from "../components/contentNav/primary-Button";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import CustomDialogBox from "./UI-Components/CustomDialogBox";
 
-import SimpleFormContainer from "@/componenets/ContentBox/EditFormFormik/formintegeration";
+import SimpleFormContainer from "@/componenets/addpasswordform/formintegeration";
+import CustomDialogBox from "../components/customDialogBox/customDialogBox";
 
 interface props {
   children?: React.ReactNode;
