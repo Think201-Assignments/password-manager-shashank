@@ -1,7 +1,61 @@
-import React from "react";
+import Head from "next/head";
+import Image from "next/image";
+// import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { Avatar, Box, Grid, Typography } from "@mui/material";
 
-const index2 = () => {
-  return <div>index2</div>;
-};
+import ListingNav from "../../layout/listingNav/listing-nav";
+import SideNav from "../../layout/sideNav/side-nav";
+import VaultNav from "../../layout/vaultNav/vault-nav";
+import ContentNav from "../../layout/contentNav/content-nav";
+import Content from "../componenets/contentBox";
+import { LineAxisOutlined } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
+import { Montserrat } from "next/font/google";
+import { tableData } from "../componenets/dummydata/containerData";
+import CorrectionVaultNav from "../../layout/vaultNav/correction-vault-nav";
+import CorrectionListingNav from "../../layout/listingNav/correction-listing-nav";
 
-export default index2;
+const inter = Montserrat({ subsets: ["latin"] });
+// montserrat
+export default function Home() {
+  const [select, setSelect] = useState("All password");
+  const [specific, setSpecific] = useState("Google");
+  useEffect(() => {}, [specific]);
+  useEffect(() => {}, [select]);
+  const selectData = (data: any) => {
+    setSelect(data);
+  };
+  const selectspecific = (data: any) => {
+    setSpecific(data);
+  };
+
+  const arr = tableData.filter((d) => d.company == specific);
+  // const List: any | any = [];
+  return (
+    <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Box sx={{ display: "flex", fontFamily: "Montserrat" }}>
+        <SideNav />
+        {/* <CorrectionVaultNav />
+        <CorrectionListingNav selectspecific={undefined} /> */}
+        <VaultNav selectData={selectData} select={select} />
+        <ListingNav selectspecific={selectspecific} data={select} />
+
+        <ContentNav>
+          <Content tableData={arr[0]} />
+        </ContentNav>
+      </Box>
+
+      {/* </VaultNav> */}
+    </>
+  );
+}

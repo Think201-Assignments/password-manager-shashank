@@ -11,6 +11,8 @@ import VaultNav from "../../../../layout/vaultNav/vault-nav";
 import ListingNav from "../../../../layout/listingNav/listing-nav";
 import ContentNav from "../../../../layout/contentNav/content-nav";
 import Content from "@/componenets/contentBox";
+import CorrectionVaultNav from "../../../../layout/vaultNav/correction-vault-nav";
+import CorrectionListingNav from "../../../../layout/listingNav/correction-listing-nav";
 
 const Page: NextPageWithLayout = () => {
   return <Box> </Box>;
@@ -21,18 +23,8 @@ Page.getLayout = function getLayout(page: ReactElement) {
   const { companyId, category } = router.query;
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-  const [select, setSelect] = useState("");
-  const selectData = (data: any) => {
-    setSelect(data);
-  };
-  const [specific, setSpecific] = useState("Google");
-  const selectspecific = (data: any) => {
-    setSpecific(data);
-  };
-  useEffect(() => {}, [specific]);
-  useEffect(() => {}, [select]);
 
-  const arr = tableData.filter((d) => d.company == specific);
+  //   const arr = tableData.filter((d) => d.company == specific);
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -40,18 +32,16 @@ Page.getLayout = function getLayout(page: ReactElement) {
         {!onlyMediumScreen && (
           <>
             <SideNav />
-            <VaultNav selectData={selectData} select={select} />
-            <ListingNav
-              selectspecific={selectspecific}
-              data={select}
-              //   baselink={`/${companyId}/${category}`}
-            />
+            {/* <VaultNav selectData={selectData} select={select} /> */}
+            <CorrectionVaultNav />
+            <CorrectionListingNav selectspecific={undefined} />
+            {/* <ListingNav selectspecific={selectspecific} data={select} /> */}
           </>
         )}
         <ContentNav>
           <PageWrapper>
             {page}
-            <Content tableData={arr[0]} />
+            {/* <Content tableData={arr[0]} /> */}
           </PageWrapper>
         </ContentNav>
       </Box>

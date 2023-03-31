@@ -28,29 +28,30 @@ interface props {
   // baselink: any;
 }
 
-const ListingNav: React.FC<props> = ({
+const CorrectionListingNav: React.FC<props> = ({
   children,
-  data,
+  //   data,
   selectspecific,
 
   // baselink,
 }) => {
   const router = useRouter();
   const { companyId, category } = router.query;
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState(category ? category : "");
 
   const [query, setQuery] = useState("");
 
   const stateSetter = (data: any) => {
     setSelect(data);
-    selectspecific(data);
+    // selectspecific(data);
   };
-  // useEffect(() => {
-  //   data === "All password"
-  //     ? setSelect(allpassword[0].text)
-  //     : setSelect(design[0].text);
-  //   query;
-  // }, []);
+
+  useEffect(() => {
+    category === "All password"
+      ? setSelect(allpassword[0].text)
+      : setSelect(design[0].text);
+    query;
+  }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <Box
@@ -87,7 +88,7 @@ const ListingNav: React.FC<props> = ({
                 fontWeight: 700,
               }}
             >
-              {data}
+              {category}
             </Typography>
             <Typography
               sx={{ fontSize: "13px", fontWeight: "500", color: "#000000A8" }}
@@ -105,15 +106,18 @@ const ListingNav: React.FC<props> = ({
               color: "#00000054",
             }}
           >
-            {data === "all-password" ? "All Password" : data + " " + "Password"}
+            {category === "all-password"
+              ? "All Password"
+              : category + " " + "Password"}
           </Typography>
         </Box>
         <List
           sx={{ height: "79vh", overflowY: "auto", overflowX: "hidden" }}
           key={1}
         >
-          {(data == "All password" ? allpassword : design)
+          {/* {(category == "all-password" ? allpassword : design) */}
 
+          {allpassword
             .filter((data) => {
               if (query === "") {
                 return data;
@@ -125,22 +129,22 @@ const ListingNav: React.FC<props> = ({
             })
             .map((data, index) => (
               <>
-                {/* <Link
+                <Link
                   style={{ textDecoration: "none" }}
                   href={{
                     pathname: `/[companyId]/[category]/${data.text}`,
                     query: { companyId: companyId, category: category },
                   }}
-                > */}
-                <Options
-                  select={select}
-                  text={data.text}
-                  index={index}
-                  stateSetter={stateSetter}
-                  match={data}
-                  // baselink={baselink}
-                />
-                {/* </Link> */}
+                >
+                  <Options
+                    select={select}
+                    text={data.text}
+                    index={index}
+                    stateSetter={stateSetter}
+                    match={data}
+                    // baselink={baselink}
+                  />
+                </Link>
               </>
             ))}
         </List>
@@ -149,4 +153,4 @@ const ListingNav: React.FC<props> = ({
   );
 };
 
-export default ListingNav;
+export default CorrectionListingNav;
