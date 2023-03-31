@@ -43,12 +43,12 @@ export default function Home() {
       </Head>
       <Box sx={{ display: "flex", fontFamily: "Montserrat" }}>
         <SideNav />
-        <VaultNav selectData={selectData} select={select} />
+        {/* <VaultNav selectData={selectData} select={select} />
         <ListingNav selectspecific={selectspecific} data={select} />
 
         <ContentNav>
           <Content tableData={arr[0]} />
-        </ContentNav>
+        </ContentNav> */}
       </Box>
 
       {/* </VaultNav> */}

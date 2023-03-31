@@ -15,6 +15,7 @@ import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import Options from "../components/listingNav/option";
 import { motion } from "framer-motion";
 import { allpassword, design } from "@/componenets/dummydata/containerData";
+import { useRouter } from "next/router";
 
 // import InputAdornment from "@mui/material/InputAdornment";
 
@@ -22,9 +23,17 @@ interface props {
   children?: React.ReactNode;
   data?: any;
   selectspecific: any;
+  // baselink: any;
 }
 
-const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
+const ListingNav: React.FC<props> = ({
+  children,
+  data,
+  selectspecific,
+  // baselink,
+}) => {
+  const route = useRouter();
+  const { selected } = route.query;
   const [select, setSelect] = useState("");
 
   const [query, setQuery] = useState("");
@@ -118,6 +127,7 @@ const ListingNav: React.FC<props> = ({ children, data, selectspecific }) => {
                 index={index}
                 stateSetter={stateSetter}
                 match={data}
+                // baselink={baselink}
               />
             ))}
         </List>

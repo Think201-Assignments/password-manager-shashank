@@ -4,6 +4,7 @@ import React from "react";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { CollectionsBookmarkRounded } from "@mui/icons-material";
 import SideIcons from "../components/sideNav/Icon";
+import Link from "next/link";
 
 interface props {
   children?: React.ReactNode;
@@ -36,12 +37,16 @@ const SideNav: React.FC<props> = ({ children }) => {
           {List.map((List: any) => {
             <SideIcons data={List} />;
           })}
-          <IconButton>
-            <SideIcons data={List[0]} />
-          </IconButton>
-          <IconButton>
-            <SideIcons data={List[1]} />
-          </IconButton>
+          <Link style={{ textDecoration: "none" }} href="/think201">
+            <IconButton>
+              <SideIcons data={List[0]} />
+            </IconButton>
+          </Link>
+          <Link style={{ textDecoration: "none" }} href="/xyz">
+            <IconButton>
+              <SideIcons data={List[1]} />
+            </IconButton>
+          </Link>
         </Stack>
       </Box>
       <Box>{children}</Box>

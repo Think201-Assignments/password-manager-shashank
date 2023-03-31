@@ -5,6 +5,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 interface props {
   select: any;
@@ -21,6 +23,8 @@ const Options: React.FC<props> = ({
   stateSetter,
   match,
 }) => {
+  const route = useRouter();
+  const a = route.pathname;
   return (
     <ListItem
       key={text}
@@ -30,6 +34,7 @@ const Options: React.FC<props> = ({
       // key={index}
       disablePadding
     >
+      {/* <Link href={`${baselink}/${text}`}> */}
       <ListItemButton key={text} onClick={() => stateSetter(text)}>
         <ListItemIcon key={text}>
           {" "}
@@ -39,6 +44,7 @@ const Options: React.FC<props> = ({
         </ListItemIcon>
         <ListItemText sx={{ color: "#000000DE" }} primary={text} />
       </ListItemButton>
+      {/* </Link> */}
     </ListItem>
   );
 };

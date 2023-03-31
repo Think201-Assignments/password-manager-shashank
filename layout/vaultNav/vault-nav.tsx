@@ -17,18 +17,21 @@ import Link from "next/link";
 import React, { useState } from "react";
 import VaultHeader from "../components/vaultNav/header";
 import VaultOptions from "../components/vaultNav/options";
+import { Router, useRouter } from "next/router";
 interface props {
   selectData?: any;
   select?: any;
+  Vaultheading?: any;
 }
 
-const VaultNav: React.FC<props> = ({ selectData, select }) => {
+const VaultNav: React.FC<props> = ({ selectData, select, Vaultheading }) => {
   const drawerWidth = 240;
-
+  const route = useRouter();
+  const { companyId } = route.query;
   const data = [
-    { text: "All password", link: "/think201/all-password" },
-    { text: "Favourites", link: "/think201/favourites" },
-    { text: "Design", link: "/think201/all-password" },
+    { text: "All password", link: `/${companyId}/all-password` },
+    { text: "Favourites", link: `/${companyId}/favourites` },
+    { text: "Design", link: `/${companyId}/all-password` },
   ];
 
   return (
@@ -45,7 +48,8 @@ const VaultNav: React.FC<props> = ({ selectData, select }) => {
           <Stack>
             <VaultHeader
               sx={{ display: "flex", fontSize: "20px", fontWeight: "700" }}
-              heading={"Think201 Vault"}
+              // heading
+              heading={companyId}
             />
             <Typography
               sx={{

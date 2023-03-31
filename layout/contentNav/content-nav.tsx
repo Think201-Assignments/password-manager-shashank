@@ -9,8 +9,9 @@ import CustomDialogBox from "../components/customDialogBox/customDialogBox";
 
 interface props {
   children?: React.ReactNode;
+  long?: Boolean;
 }
-const ContentNav: React.FC<props> = ({ children }) => {
+const ContentNav: React.FC<props> = ({ children, long }) => {
   const [open, setOpen] = React.useState(false);
   // const OnClickEvent = () => {
   //   console.log("clicked");
@@ -24,7 +25,7 @@ const ContentNav: React.FC<props> = ({ children }) => {
   };
   return (
     <>
-      <Box sx={{ width: "170vh" }}>
+      <Box sx={{ width: long ? "180vh" : "170vh" }}>
         <Box
           sx={{
             pt: 0,
