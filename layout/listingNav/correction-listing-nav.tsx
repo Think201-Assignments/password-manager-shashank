@@ -46,12 +46,12 @@ const CorrectionListingNav: React.FC<props> = ({
     // selectspecific(data);
   };
 
-  useEffect(() => {
-    category === "All password"
-      ? setSelect(allpassword[0].text)
-      : setSelect(design[0].text);
-    query;
-  }, []);
+  // useEffect(() => {
+  //   category === "All password"
+  //     ? setSelect(allpassword[0].text)
+  //     : setSelect(design[0].text);
+  //   query;
+  // }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <Box
@@ -131,10 +131,10 @@ const CorrectionListingNav: React.FC<props> = ({
               <>
                 <Link
                   style={{ textDecoration: "none" }}
-                  href={{
-                    pathname: `/[companyId]/[category]/${data.text}`,
-                    query: { companyId: companyId, category: category },
-                  }}
+                  href={ `/${companyId}/${category}/${data.text}`
+                    
+                   
+                  }
                 >
                   <Options
                     select={select}
