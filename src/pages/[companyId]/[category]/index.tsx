@@ -6,25 +6,29 @@ import PageWrapper from "@/componenets/animate/page-wrapper";
 import { NextPageWithLayout } from "@/pages/_app";
 import { useRouter } from "next/router";
 import { tableData } from "@/componenets/dummydata/containerData";
-import SideNav from "../../../../layout/sideNav/side-nav";
-import VaultNav from "../../../../layout/vaultNav/vault-nav";
-import ListingNav from "../../../../layout/listingNav/listing-nav";
-import ContentNav from "../../../../layout/contentNav/content-nav";
+
 import Content from "@/componenets/contentBox";
-import CorrectionVaultNav from "../../../../layout/vaultNav/correction-vault-nav";
-import CorrectionListingNav from "../../../../layout/listingNav/correction-listing-nav";
+import SideNav from "../../../../../layout/sideNav/side-nav";
+import VaultNav from "../../../../../layout/vaultNav/vault-nav";
+import ListingNav from "../../../../../layout/listingNav/listing-nav";
+import ContentNav from "../../../../../layout/contentNav/content-nav";
+import CorrectionVaultNav from "../../../../../layout/vaultNav/correction-vault-nav";
+import CorrectionListingNav from "../../../../../layout/listingNav/correction-listing-nav";
+import { useProductContext } from "../../../../../context/listingContext";
 
 const Page: NextPageWithLayout = () => {
-  return <Box> </Box>;
+  // const { listing } = useProductContext();
+  return <Box>SELECTED</Box>;
 };
 //We will get specific
 Page.getLayout = function getLayout(page: ReactElement) {
   const router = useRouter();
-  const { companyId, category } = router.query;
+  const { companyId, category,selected } = router.query;
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
+  // const { listing } = useProductContext();
 
-  //   const arr = tableData.filter((d) => d.company == specific);
+    const arr = tableData.filter((d) => d.company == selected);
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -41,7 +45,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
         <ContentNav>
           <PageWrapper>
             {page}
-            {/* <Content tableData={arr[0]} /> */}
+            <Content tableData={arr[0]} />
           </PageWrapper>
         </ContentNav>
       </Box>
