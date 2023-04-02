@@ -14,56 +14,39 @@ import ListingNav from "../../../../../layout/listingNav/listing-nav";
 import ContentNav from "../../../../../layout/contentNav/content-nav";
 import CorrectionVaultNav from "../../../../../layout/vaultNav/correction-vault-nav";
 import CorrectionListingNav from "../../../../../layout/listingNav/correction-listing-nav";
+import { useProductContext } from "../../../../../context/listingContext";
 
 const Page: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { selected } = router.query;
-  const arr = tableData.filter((d) => d.company == selected);
-  return (
-    <Box>
-      <h1>Company-Name: {selected}</h1> <Content tableData={arr[0]} />
-    </Box>
-  );
+  // const { listing } = useProductContext();
+  return <Box>SELECTED</Box>;
 };
 //We will get specific
 Page.getLayout = function getLayout(page: ReactElement) {
   const router = useRouter();
-  const { slected } = router.query;
+  const { companyId, category,selected } = router.query;
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-  const [select, setSelect] = useState("");
-  const selectData = (data: any) => {
-    setSelect(data);
-  };
-  const [routedatasetter, setRouteDataSetter] = useState("");
-  const [specific, setSpecific] = useState("");
-  const selectspecific = (data: any) => {
-    setSpecific(data);
-  };
-  //   useEffect(() => {}, [specific]);
-  //   useEffect(() => {}, [select]);
+  // const { listing } = useProductContext();
 
-  const arr = tableData.filter((d) => d.company == slected);
+    const arr = tableData.filter((d) => d.company == selected);
   return (
     <>
       <Box sx={{ display: "flex" }}>
         {" "}
         {!onlyMediumScreen && (
           <>
-            {/* {slected} */}
             <SideNav />
-            {/* <VaultNav selectData={selectData} select={select} />
-            <ListingNav
-              selectspecific={selectspecific}
-              data={select}
-              //   baselink={`/${companyId}/${category}`}
-            /> */}
+            {/* <VaultNav selectData={selectData} select={select} /> */}
             <CorrectionVaultNav />
             <CorrectionListingNav selectspecific={undefined} />
+            {/* <ListingNav selectspecific={selectspecific} data={select} /> */}
           </>
         )}
         <ContentNav>
-          <PageWrapper>{page}</PageWrapper>
+          <PageWrapper>
+            {page}
+            <Content tableData={arr[0]} />
+          </PageWrapper>
         </ContentNav>
       </Box>
     </>
