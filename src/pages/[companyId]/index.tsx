@@ -12,9 +12,12 @@ import ContentNav from "../../../layout/contentNav/content-nav";
 import { Content } from "next/font/google";
 import CorrectionVaultNav from "../../../layout/vaultNav/correction-vault-nav";
 import CorrectionListingNav from "../../../layout/listingNav/correction-listing-nav";
+import {motion as m} from "framer-motion"
 
 const Page: NextPageWithLayout = () => {
   return (
+  
+
     <Box
       sx={{
         justifyContent: "center",
@@ -46,37 +49,33 @@ Page.getLayout = function getLayout(page: ReactElement) {
   const { companyId } = router.query;
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-  //   const [select, setSelect] = useState("");
-  //   const selectData = (data: any) => {
-  //     setSelect(data);
-  //   };
-  //   const [specific, setSpecific] = useState("Google");
-  //   const selectspecific = (data: any) => {
-  //     setSpecific(data);
-  //   };
-  //   useEffect(() => {}, [specific]);
-  //   useEffect(() => {}, [select]);
-
-  //   const arr = tableData.filter((d) => d.company == specific);
+ 
   return (
     <>
+    <Box sx={{display:"flex"}}>
+    <SideNav />
+        <m.main
+    initial={{x:"-12%"}}animate={{x:"0%"}} transition={{duration:0.75,ease:"easeOut"}}
+    exit={{opacity:1}}
+>
       <Box sx={{ display: "flex" }}>
         {" "}
         {!onlyMediumScreen && (
           <>
-            <SideNav />
             <CorrectionVaultNav />
             {/* <CorrectionListingNav selectspecific={undefined} /> */}
 
             {/* <VaultNav selectData={selectData} select={select} /> */}
           </>
         )}
-        <ContentNav long={true}>
+        {/* <ContentNav long={true}>
           <PageWrapper>
             {page}
-            {/* <Content tableData={arr[0]} /> */}
+           
           </PageWrapper>
-        </ContentNav>
+        </ContentNav> */}
+      </Box>
+      </m.main>
       </Box>
     </>
   );
