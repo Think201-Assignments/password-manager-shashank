@@ -1,8 +1,6 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 
-import PageWrapper from "@/componenets/animate/page-wrapper";
-
 import { NextPageWithLayout } from "@/pages/_app";
 import { useRouter } from "next/router";
 import { tableData } from "@/componenets/dummydata/containerData";
@@ -36,13 +34,10 @@ const Page: NextPageWithLayout = () => {
 //We will get specific
 Page.getLayout = function getLayout(page: ReactElement) {
   const router = useRouter();
-  const { listingdata } = useListingContext();
-  const { companyId, category, selected } = router.query;
-  const query = selected && selected[0].toUpperCase() + selected.slice(1);
+
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
 
-  const arr = listingdata.filter((d) => d.company == query);
   return (
     <>
       <Box sx={{ display: "flex" }}>
