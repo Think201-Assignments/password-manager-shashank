@@ -12,12 +12,10 @@ import ContentNav from "../../../layout/contentNav/content-nav";
 import { Content } from "next/font/google";
 import CorrectionVaultNav from "../../../layout/vaultNav/correction-vault-nav";
 import CorrectionListingNav from "../../../layout/listingNav/correction-listing-nav";
-import {motion as m} from "framer-motion"
+import { motion as m } from "framer-motion";
 
 const Page: NextPageWithLayout = () => {
   return (
-  
-
     <Box
       sx={{
         justifyContent: "center",
@@ -43,39 +41,30 @@ const Page: NextPageWithLayout = () => {
     </Box>
   );
 };
-//We will get specific
+
 Page.getLayout = function getLayout(page: ReactElement) {
-  const router = useRouter();
-  const { companyId } = router.query;
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
- 
+
   return (
     <>
-    <Box sx={{display:"flex"}}>
-    <SideNav />
-        <m.main
-    initial={{x:"-12%"}}animate={{x:"0%"}} transition={{duration:0.75,ease:"easeOut"}}
-    exit={{opacity:1}}
->
       <Box sx={{ display: "flex" }}>
-        {" "}
-        {!onlyMediumScreen && (
-          <>
-            <CorrectionVaultNav />
-            {/* <CorrectionListingNav selectspecific={undefined} /> */}
-
-            {/* <VaultNav selectData={selectData} select={select} /> */}
-          </>
-        )}
-        {/* <ContentNav long={true}>
-          <PageWrapper>
-            {page}
-           
-          </PageWrapper>
-        </ContentNav> */}
-      </Box>
-      </m.main>
+        <SideNav />
+        {/* <m.main
+          initial={{ x: "-12%" }}
+          animate={{ x: "0%" }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          exit={{ opacity: 1 }}
+        > */}
+        <Box sx={{ display: "flex" }}>
+          {" "}
+          {!onlyMediumScreen && (
+            <>
+              <CorrectionVaultNav />
+            </>
+          )}
+        </Box>
+        {/* </m.main> */}
       </Box>
     </>
   );

@@ -33,7 +33,7 @@ const TableHeader: React.FC<props> = ({ tableData }) => {
               width: "46px",
             }}
           >
-            {tableData?.company.charAt(0)}
+            {tableData?.company?.charAt(0)}
           </Avatar>
           <Stack>
             <Box

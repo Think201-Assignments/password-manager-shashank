@@ -10,6 +10,7 @@ import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import { AnimatePresence } from "framer-motion";
+import ListingContextProvider from "../../context/ListingContextProvider";
 // import ProductContextProvider from "../../context/listingContextProvider";
 
 // import type { AppProps } from "next/app";
@@ -40,12 +41,16 @@ export default function MyApp(props: MyAppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {/* <ProductContextProvider> */}
-        <main className={styles.title}>
-          {getLayout(<AnimatePresence initial={false} mode={"wait"}><Component {...pageProps} /></AnimatePresence>)}
-        </main>
-        {/* <Component {...pageProps} /> */}
-        {/* </ProductContextProvider> */}
+        <ListingContextProvider>
+          <main className={styles.title}>
+            {getLayout(
+              <AnimatePresence initial={false} mode={"wait"}>
+                <Component {...pageProps} />
+              </AnimatePresence>
+            )}
+          </main>
+          {/* <Component {...pageProps} /> */}
+        </ListingContextProvider>
       </ThemeProvider>
     </CacheProvider>
   );

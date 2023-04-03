@@ -87,7 +87,9 @@ const ListingNav: React.FC<props> = ({
                 fontWeight: 700,
               }}
             >
-              {data}
+              {data === "all-password"
+                ? "All Password"
+                : data + " " + "Password"}
             </Typography>
             <Typography
               sx={{ fontSize: "13px", fontWeight: "500", color: "#000000A8" }}
@@ -125,22 +127,13 @@ const ListingNav: React.FC<props> = ({
             })
             .map((data, index) => (
               <>
-                {/* <Link
-                  style={{ textDecoration: "none" }}
-                  href={{
-                    pathname: `/[companyId]/[category]/${data.text}`,
-                    query: { companyId: companyId, category: category },
-                  }}
-                > */}
                 <Options
                   select={select}
                   text={data.text}
                   index={index}
                   stateSetter={stateSetter}
                   match={data}
-                  // baselink={baselink}
                 />
-                {/* </Link> */}
               </>
             ))}
         </List>

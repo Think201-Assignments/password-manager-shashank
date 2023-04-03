@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 // eslint-disable-next-line import/prefer-default-export
 export const validationSchema = yup.object({
-  companyName: yup.string("Enter Organisation name").required("Organisation Name is required"),
+  company: yup.string("Enter Organisation name").required("Organisation Name is required"),
   login: yup
     .string("Enter your email")
     .email("Enter a valid email")

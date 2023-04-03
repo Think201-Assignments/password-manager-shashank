@@ -9,26 +9,40 @@ import { tableData } from "@/componenets/dummydata/containerData";
 
 import Content from "@/componenets/contentBox";
 import SideNav from "../../../../../layout/sideNav/side-nav";
-import VaultNav from "../../../../../layout/vaultNav/vault-nav";
-import ListingNav from "../../../../../layout/listingNav/listing-nav";
+
 import ContentNav from "../../../../../layout/contentNav/content-nav";
 import CorrectionVaultNav from "../../../../../layout/vaultNav/correction-vault-nav";
 import CorrectionListingNav from "../../../../../layout/listingNav/correction-listing-nav";
-import { useProductContext } from "../../../../../context/listingContext";
+
+import { useListingContext } from "../../../../../context/ListingContext";
 
 const Page: NextPageWithLayout = () => {
-  // const { listing } = useProductContext();
-  return <Box>SELECTED</Box>;
+  const router = useRouter();
+
+  const { companyId, category, selected } = router.query;
+  const query = selected && selected[0].toUpperCase() + selected.slice(1);
+  const { listingdata } = useListingContext();
+
+  return (
+    <Box>
+      <Content
+        tableData={listingdata?.filter(
+          (d) => d.company.toLowerCase() == query?.toLowerCase()
+        )}
+      />
+    </Box>
+  );
 };
 //We will get specific
 Page.getLayout = function getLayout(page: ReactElement) {
   const router = useRouter();
-  const { companyId, category,selected } = router.query;
+  const { listingdata } = useListingContext();
+  const { companyId, category, selected } = router.query;
+  const query = selected && selected[0].toUpperCase() + selected.slice(1);
   const theme = useTheme();
   const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-  // const { listing } = useProductContext();
 
-    const arr = tableData.filter((d) => d.company == selected);
+  const arr = listingdata.filter((d) => d.company == query);
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -36,18 +50,12 @@ Page.getLayout = function getLayout(page: ReactElement) {
         {!onlyMediumScreen && (
           <>
             <SideNav />
-            {/* <VaultNav selectData={selectData} select={select} /> */}
+
             <CorrectionVaultNav />
             <CorrectionListingNav selectspecific={undefined} />
-            {/* <ListingNav selectspecific={selectspecific} data={select} /> */}
           </>
         )}
-        <ContentNav>
-          <PageWrapper>
-            {page}
-            <Content tableData={arr[0]} />
-          </PageWrapper>
-        </ContentNav>
+        <ContentNav>{page}</ContentNav>
       </Box>
     </>
   );

@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { allpassword, design } from "@/componenets/dummydata/containerData";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useListingContext } from "../../context/ListingContext";
 
 // import InputAdornment from "@mui/material/InputAdornment";
 
@@ -35,6 +36,10 @@ const CorrectionListingNav: React.FC<props> = ({
 
   // baselink,
 }) => {
+  const [password, setPassword] = useState<any | []>([]);
+  const { listingdata, allpassworddata } = useListingContext();
+
+  useEffect(() => setPassword(allpassword), [listingdata]);
   const router = useRouter();
   const { companyId, category } = router.query;
   const [select, setSelect] = useState(category ? category : "");
@@ -46,12 +51,6 @@ const CorrectionListingNav: React.FC<props> = ({
     // selectspecific(data);
   };
 
-  // useEffect(() => {
-  //   category === "All password"
-  //     ? setSelect(allpassword[0].text)
-  //     : setSelect(design[0].text);
-  //   query;
-  // }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <Box
@@ -88,7 +87,8 @@ const CorrectionListingNav: React.FC<props> = ({
                 fontWeight: 700,
               }}
             >
-              {category}
+              {category === "all-password" ? "All Password" : null}
+              {category === "favourites" ? "Favourites" : null}
             </Typography>
             <Typography
               sx={{ fontSize: "13px", fontWeight: "500", color: "#000000A8" }}
@@ -117,8 +117,8 @@ const CorrectionListingNav: React.FC<props> = ({
         >
           {/* {(category == "all-password" ? allpassword : design) */}
 
-          {allpassword
-            .filter((data) => {
+          {password
+            .filter((data: any) => {
               if (query === "") {
                 return data;
               } else if (
@@ -127,14 +127,13 @@ const CorrectionListingNav: React.FC<props> = ({
                 return data;
               }
             })
-            .map((data, index) => (
+            .map((data: any, index: any) => (
               <>
                 <Link
                   style={{ textDecoration: "none" }}
-                  href={ `/${companyId}/${category}/${data.text}`
-                    
-                   
-                  }
+                  href={`/${companyId}/${category}/${
+                    data.text[0].toLowerCase() + data.text.slice(1)
+                  }`}
                 >
                   <Options
                     select={select}

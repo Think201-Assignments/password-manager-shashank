@@ -21,7 +21,7 @@ export const SimpleFormBridged = (props: any) => {
           //   borderBottom: "solid 1px #EFEFEF",
         }}
         component={TextField}
-        name="companyName"
+        name="company"
         label="Organisation Name"
         fullWidth
         required

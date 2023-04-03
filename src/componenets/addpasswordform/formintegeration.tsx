@@ -6,18 +6,22 @@ import { initialValues } from "./initialvalues";
 import { validationSchema } from "./validation.js";
 import { handleSubmit } from "./handleSubmit";
 import { allpassword, tableData } from "../dummydata/containerData";
+import { useListingContext } from "../../../context/ListingContext";
 
 interface props {
   handleClose: Function;
 }
 
 const SimpleFormContainer: React.FC<props> = ({ handleClose }) => {
+  const { addProduct, addPassword } = useListingContext();
   const handleSubmit = (values: any, actions: any) => {
     console.log(values);
     tableData.push(values);
-    allpassword.push({ text: values.companyName, color: "" });
+    allpassword.unshift({ text: values.company, color: "" });
+    // addPassword({ text: values.company, color: "" });
     console.log(tableData);
     console.log(allpassword);
+    addProduct(values);
 
     handleClose();
   };

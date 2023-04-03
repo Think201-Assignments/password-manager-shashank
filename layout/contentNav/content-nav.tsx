@@ -25,7 +25,7 @@ const ContentNav: React.FC<props> = ({ children, long }) => {
   };
   return (
     <>
-      <Box sx={{ width: long ? "180vh" : "170vh" }}>
+      <Box sx={{ width: long ? "147.5vh" : "170vh" }}>
         <Box
           sx={{
             pt: 0,

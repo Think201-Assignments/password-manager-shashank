@@ -25,9 +25,9 @@ const Content: React.FC<props> = ({ tableData }) => {
         message="Copied to clipboard"
       />
       <Stack>
-        <TableHeader tableData={tableData} />
+        <TableHeader tableData={tableData[0]} />
 
-        <DataTable tableData={tableData} />
+        <DataTable tableData={tableData[0]} />
       </Stack>
     </Box>
   );

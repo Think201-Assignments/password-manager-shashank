@@ -1,5 +1,5 @@
 export const initialValues = {
-  companyName: "",
+  company: "",
   login: "",
   password: "",
   token: "",
