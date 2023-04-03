@@ -12,31 +12,21 @@ import ContentNav from "../../../../layout/contentNav/content-nav";
 import CorrectionVaultNav from "../../../../layout/vaultNav/correction-vault-nav";
 import CorrectionListingNav from "../../../../layout/listingNav/correction-listing-nav";
 import { motion as m } from "framer-motion";
+import { useListingContext } from "../../../../context/ListingContext";
+import { allpassword } from "@/componenets/dummydata/containerData";
+import Content from "@/componenets/contentBox";
 
 const Page: NextPageWithLayout = () => {
+  const [password, setPassword] = useState<any | []>([]);
+  const { listingdata } = useListingContext();
+  useEffect(() => setPassword(allpassword), [listingdata]);
   return (
-    <Box
-      sx={{
-        justifyContent: "center",
-
-        pt: "20vh",
-        pr: "70vh",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "row",
-          height: "120px",
-          width: "220px",
-          ml: 20,
-          p: 1,
-          border: "1px dashed black",
-        }}
-      >
-        <Typography>select the Category</Typography>{" "}
-      </Box>
+    <Box>
+      <Content
+        tableData={listingdata?.filter(
+          (d) => d.company.toLowerCase() == password[0]?.text?.toLowerCase()
+        )}
+      />
     </Box>
   );
 };
@@ -57,16 +47,16 @@ Page.getLayout = function getLayout(page: ReactElement) {
             <CorrectionListingNav selectspecific={undefined} />
           </>
         )}
-        <m.main
+        {/* <m.main
           initial={{ x: "100%" }}
           animate={{ x: "0%" }}
           transition={{ duration: 0.75, ease: "easeOut" }}
           exit={{ opacity: 1 }}
-        >
-          <ContentNav long={true}>
-            <PageWrapper>{page}</PageWrapper>
-          </ContentNav>
-        </m.main>
+        > */}
+        <ContentNav long={true}>
+          <PageWrapper>{page}</PageWrapper>
+        </ContentNav>
+        {/* </m.main> */}
       </Box>
     </>
   );

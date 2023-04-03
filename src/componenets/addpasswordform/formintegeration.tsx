@@ -7,6 +7,8 @@ import { validationSchema } from "./validation.js";
 import { handleSubmit } from "./handleSubmit";
 import { allpassword, tableData } from "../dummydata/containerData";
 import { useListingContext } from "../../../context/ListingContext";
+// import { Router } from "@mui/icons-material";
+import Router, { useRouter, withRouter } from "next/router";
 
 interface props {
   handleClose: Function;
@@ -14,6 +16,8 @@ interface props {
 
 const SimpleFormContainer: React.FC<props> = ({ handleClose }) => {
   const { addProduct, addPassword } = useListingContext();
+  const router = useRouter();
+  const { companyId, category } = router.query;
   const handleSubmit = (values: any, actions: any) => {
     console.log(values);
     tableData.push(values);
