@@ -45,13 +45,14 @@ const CorrectionListingNav: React.FC<props> = ({
   useEffect(() => {
     condition && setCondition(false);
     setPassword(allpassword);
+    setSelect(allpassword[0].text);
     setTimeout(() => {
       setCondition(true);
-    }, 3000);
+    }, 1000);
   }, [reload]);
   const router = useRouter();
   const { companyId, category } = router.query;
-  const [select, setSelect] = useState(category ? category : "");
+  const [select, setSelect] = useState(allpassword[0].text);
 
   const [query, setQuery] = useState("");
 

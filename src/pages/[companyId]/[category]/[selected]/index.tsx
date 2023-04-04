@@ -32,7 +32,7 @@ const Page: NextPageWithLayout = () => {
         reload ? setReloadAction(false) : setReloadAction(true);
       }
       setActionState(false);
-    }, 3000);
+    }, 1000);
   }, [listingdata]);
 
   return (
