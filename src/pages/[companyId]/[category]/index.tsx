@@ -22,11 +22,11 @@ const Page: NextPageWithLayout = () => {
   useEffect(() => setPassword(allpassword), [listingdata]);
   return (
     <Box>
-      <Content
+      {/* <Content
         tableData={listingdata?.filter(
           (d) => d.company.toLowerCase() == password[0]?.text?.toLowerCase()
         )}
-      />
+      /> */}
     </Box>
   );
 };

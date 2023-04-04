@@ -2,6 +2,7 @@ import {
   Hidden,
   InputAdornment,
   List,
+  Skeleton,
   Stack,
   TextField,
   Typography,
@@ -37,9 +38,17 @@ const CorrectionListingNav: React.FC<props> = ({
   // baselink,
 }) => {
   const [password, setPassword] = useState<any | []>([]);
-  const { listingdata, allpassworddata } = useListingContext();
+  const { reload, setReloadAction } = useListingContext();
+  const [condition, setCondition] = useState(false);
 
-  useEffect(() => setPassword(allpassword), [listingdata]);
+  // useEffect(() => setPassword(allpassword), [listingdata]);
+  useEffect(() => {
+    condition && setCondition(false);
+    setPassword(allpassword);
+    setTimeout(() => {
+      setCondition(true);
+    }, 3000);
+  }, [reload]);
   const router = useRouter();
   const { companyId, category } = router.query;
   const [select, setSelect] = useState(category ? category : "");
@@ -129,21 +138,45 @@ const CorrectionListingNav: React.FC<props> = ({
             })
             .map((data: any, index: any) => (
               <>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  href={`/${companyId}/${category}/${
-                    data.text[0].toLowerCase() + data.text.slice(1)
-                  }`}
-                >
-                  <Options
-                    select={select}
-                    text={data.text}
-                    index={index}
-                    stateSetter={stateSetter}
-                    match={data}
-                    // baselink={baselink}
-                  />
-                </Link>
+                {condition ? (
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    href={`/${companyId}/${category}/${
+                      data.text[0].toLowerCase() + data.text.slice(1)
+                    }`}
+                  >
+                    <Options
+                      select={select}
+                      text={data.text}
+                      index={index}
+                      stateSetter={stateSetter}
+                      match={data}
+                      // baselink={baselink}
+                    />
+                  </Link>
+                ) : (
+                  <>
+                    {" "}
+                    <Skeleton
+                      variant="rectangular"
+                      sx={{ ml: 2, mb: 2 }}
+                      width={210}
+                      height={50}
+                    />
+                    {/* <Skeleton
+                      variant="rectangular"
+                      sx={{ ml: 2 }}
+                      width={210}
+                      height={10}
+                    /> */}
+                    {/* <Skeleton
+                      variant="rectangular"
+                      sx={{ ml: 2 }}
+                      width={210}
+                      height={10}
+                    /> */}
+                  </>
+                )}
               </>
             ))}
         </List>

@@ -16,6 +16,14 @@ const ListingContextProvider = ({ children }: IProps) => {
     { text: "Adobe design suite", color: "red" },
     { text: "Storyblocks", color: "" },
   ]);
+  const [action, setAction] = useState<Boolean | any>(false);
+  const [reload, setReload] = useState<Boolean | any>(false);
+  const setReloadAction = (data: boolean) => {
+    setReload(data);
+  };
+  const setActionState = (data: boolean) => {
+    setAction(data);
+  };
   const addPassword = (data: any) => {
     data.id = AllPassword.length;
     setAllPassword([...AllPassword, data]);
@@ -76,6 +84,10 @@ const ListingContextProvider = ({ children }: IProps) => {
       value={{
         listingdata: listing,
         allpassworddata: AllPassword,
+        action,
+        reload,
+        setReloadAction,
+        setActionState,
         addPassword,
         addProduct,
       }}

@@ -28,6 +28,7 @@ interface props {
   selectData?: any;
   select?: any;
   Vaultheading?: any;
+  propsData: any;
 }
 
 const CorrectionVaultNav: React.FC<props> = ({ Vaultheading }) => {

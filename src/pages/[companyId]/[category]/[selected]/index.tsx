@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 
 import { NextPageWithLayout } from "@/pages/_app";
@@ -13,21 +13,54 @@ import CorrectionVaultNav from "../../../../../layout/vaultNav/correction-vault-
 import CorrectionListingNav from "../../../../../layout/listingNav/correction-listing-nav";
 
 import { useListingContext } from "../../../../../context/ListingContext";
+import { json } from "stream/consumers";
 
 const Page: NextPageWithLayout = () => {
   const router = useRouter();
 
   const { companyId, category, selected } = router.query;
   const query = selected && selected[0].toUpperCase() + selected.slice(1);
-  const { listingdata } = useListingContext();
+  const { listingdata, setActionState, action, setReloadAction, reload } =
+    useListingContext();
+  const [condition, setCondition] = useState(false);
+  useEffect(() => {
+    condition && setCondition(false);
+    action;
+    setTimeout(() => {
+      setCondition(true);
+      if (action) {
+        reload ? setReloadAction(false) : setReloadAction(true);
+      }
+      setActionState(false);
+    }, 3000);
+  }, [listingdata]);
 
   return (
     <Box>
-      <Content
-        tableData={listingdata?.filter(
-          (d) => d.company.toLowerCase() == query?.toLowerCase()
-        )}
-      />
+      {/* {JSON.stringify(action)} */}
+      {condition ? (
+        <Content
+          tableData={listingdata?.filter(
+            (d) => d.company.toLowerCase() == query?.toLowerCase()
+          )}
+        />
+      ) : (
+        <Box sx={{ display: "flex", justifyContent: "space-around", mt: 8 }}>
+          <Box sx={{ display: "flex" }}>
+            <Skeleton
+              variant="circular"
+              width={40}
+              height={40}
+              sx={{ mr: 2 }}
+            />
+            <Box>
+              <Skeleton width={"120px"} height={"20px"} animation="wave" />
+              <Skeleton width={"120px"} height={"20px"} animation="wave" />
+            </Box>
+          </Box>
+          <Skeleton width={"320px"} height={"20px"} animation="wave" />
+        </Box>
+      )}
     </Box>
   );
 };

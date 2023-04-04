@@ -15,7 +15,7 @@ interface props {
 }
 
 const SimpleFormContainer: React.FC<props> = ({ handleClose }) => {
-  const { addProduct, addPassword } = useListingContext();
+  const { addProduct, addPassword, setActionState } = useListingContext();
   const router = useRouter();
   const { companyId, category } = router.query;
   const handleSubmit = (values: any, actions: any) => {
@@ -26,6 +26,10 @@ const SimpleFormContainer: React.FC<props> = ({ handleClose }) => {
     console.log(tableData);
     console.log(allpassword);
     addProduct(values);
+    setActionState(true);
+    router.push({
+      pathname: `/${companyId}/${category}/${values.company.toLowerCase()}`,
+    });
 
     handleClose();
   };
