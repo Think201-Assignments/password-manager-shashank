@@ -1,109 +1,58 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import GoogleSignInSignUpCustomButtom from "@/componenets/SignIn-Signup/googleSignInCustomButtom";
+import { Box, Button, Divider, Typography } from "@mui/material";
+import { Italiana } from "next/font/google";
+import React, { ReactElement } from "react";
+import CustomTypographyListView from "../../../layout/components/signin/customTypographyListView";
+import SigninLayout from "../../../layout/signin/signin";
+import { NextPageWithLayout } from "../_app";
+import SignInFormContainer from "./inc/sign-in-Form-Integeration";
 
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Link from "next/link";
-
-const theme = createTheme();
-
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-
+const Page: NextPageWithLayout = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="sm">
-        <CssBaseline />
-        <Box
+    <Box>
+      {/* {"margin top is already there in Custom Button"} */}
+      <GoogleSignInSignUpCustomButtom>
+        {" "}
+        Continue with google
+      </GoogleSignInSignUpCustomButtom>
+      <Divider>
+        <Typography
           sx={{
-            marginTop: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            border: "1px solid #EFEFEF",
-            p: 8,
+            color: "#3333338A",
+            fontWeight: "400",
+            fontSize: "13px",
+            my: 3,
           }}
         >
-          <Typography
-            component="h1"
-            sx={{ fontWeight: 300, mt: 0, pb: 3, color: "#000000A8" }}
-            variant="h5"
-          >
-            Password Manager
-          </Typography>
-          <Avatar sx={{ m: 1, bgcolor: "#EFEFEF" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography
-            component="h1"
-            sx={{ fontWeight: 600, mt: 2, color: "#000000A8" }}
-            variant="h5"
-          >
-            Sign In
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+          OR
+        </Typography>
+      </Divider>
 
-            <Link href="/all-password">
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                // color=""
-                sx={{
-                  mt: 3,
-                  mb: 2,
-                  backgroundColor: "primary",
-                  textDecoration: "none",
-                }}
-              >
-                Sign In
-              </Button>
-            </Link>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+      <SignInFormContainer />
+    </Box>
   );
-}
+};
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  const Display = (
+    <>
+      {" "}
+      <Typography sx={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>
+        Sign in to your account
+      </Typography>
+    </>
+  );
+  return (
+    <>
+      <SigninLayout
+        sigin={true}
+        Display={Display}
+        heading={"Sign in to your account"}
+        subHeading={"Please select an option to continue to your account"}
+      >
+        {page}
+      </SigninLayout>
+    </>
+  );
+};
+export default Page;

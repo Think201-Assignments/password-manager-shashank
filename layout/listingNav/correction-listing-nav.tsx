@@ -164,18 +164,6 @@ const CorrectionListingNav: React.FC<props> = ({
                       width={210}
                       height={50}
                     />
-                    {/* <Skeleton
-                      variant="rectangular"
-                      sx={{ ml: 2 }}
-                      width={210}
-                      height={10}
-                    /> */}
-                    {/* <Skeleton
-                      variant="rectangular"
-                      sx={{ ml: 2 }}
-                      width={210}
-                      height={10}
-                    /> */}
                   </>
                 )}
               </>
