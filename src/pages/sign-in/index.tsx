@@ -1,6 +1,7 @@
 import GoogleSignInSignUpCustomButtom from "@/componenets/SignIn-Signup/googleSignInCustomButtom";
 import { Box, Button, Divider, Typography } from "@mui/material";
 import { Italiana } from "next/font/google";
+import Link from "next/link";
 import React, { ReactElement } from "react";
 import CustomTypographyListView from "../../../layout/components/signin/customTypographyListView";
 import SigninLayout from "../../../layout/signin/signin";
@@ -29,6 +30,27 @@ const Page: NextPageWithLayout = () => {
       </Divider>
 
       <SignInFormContainer />
+      <Box
+        sx={{
+          color: "#2121218A",
+          fontSize: "12px",
+          fontWeight: "600",
+          display: "flex",
+          justifyContent: "center",
+          pt: 3,
+        }}
+      >
+        {/* <Box></Box> */}
+        Not a member &nbsp;
+        <Link href="sign-up" style={{ textDecoration: "none" }}>
+          <Typography
+            //   variant="body1"
+            sx={{ color: "#4DB6AC", fontSize: "12px", fontWeight: "600" }}
+          >
+            Sign up
+          </Typography>
+        </Link>
+      </Box>
     </Box>
   );
 };

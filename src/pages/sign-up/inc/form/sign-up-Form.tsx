@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
-import { Box, Button, LinearProgress, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
-import { Label } from "@mui/icons-material";
+import { Label, Visibility, VisibilityOff } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 export const SignUpForm = (props: any) => {
+  const route = useRouter();
   const { isValid, isSubmitting } = props;
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
     <Form noValidate>
@@ -65,8 +77,22 @@ export const SignUpForm = (props: any) => {
           }}
           InputLabelProps={{ shrink: false }}
           component={TextField}
-          type="password"
           name="password"
+          type={showPassword ? "text" : "password"}
+          InputProps={{
+            // <-- This is where the toggle button is added.
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
           // label="Password"
           placeholder="password"
           fullWidth
@@ -78,10 +104,12 @@ export const SignUpForm = (props: any) => {
 
       <Button
         // color={"#2a2f88"}
+        onClick={() => route.push("/sign-up/email-verification")}
         sx={{
           mt: 2,
           background: "#4DB6ACB2",
           width: { xs: "363px", sm: "463px", md: "463px", lg: "463px" },
+          fontWeight: "700",
           height: "49px",
           borderRadius: 0,
         }}

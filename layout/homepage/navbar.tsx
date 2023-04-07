@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Router, useRouter } from "next/router";
 
 interface Props {
   /**
@@ -27,7 +28,8 @@ const navItems = ["Product", "Resources", "Support", "Pricing"];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(true);
+  const route = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -62,55 +64,87 @@ export default function DrawerAppBar(props: Props) {
     <Box sx={{ display: "flex", backgroundColor: "transparent" }}>
       {/* <CssBaseline /> */}
       <AppBar
-        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+        sx={{ backgroundColor: "transparent", boxShadow: "none", pt: "20px" }}
         component="nav"
       >
-        <Box sx={{ display: "flex", pt: 2, justifyContent: "space-evenly" }}>
-          <Toolbar>
-            <Box sx={{ display: "flex" }}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: "none" } }}
+        {/* <Box sx={{ display: "flex", pt: 2, justifyContent: "space-evenly" }}> */}
+        <Toolbar>
+          <IconButton
+            // color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon sx={{ color: "#000" }} />
+          </IconButton>
+          {/* <Box component="div">dfdfsfd</Box> */}
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                sm: "block",
+                fontSize: "28px",
+                fontWeight: "800",
+                color: "#1B847A",
+              },
+            }}
+          >
+            <Box></Box>
+            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;Helix. &nbsp; &nbsp;&nbsp;&nbsp;
+            {navItems.map((item) => (
+              <Button
+                key={item}
+                sx={{ color: "#666666", mx: 1, textTransform: "none" }}
               >
-                <MenuIcon />
-              </IconButton>
-              <Typography
-                sx={{
-                  fontSize: "24px",
-                  fontWeight: "800",
-                  color: "#1B847A",
-                  //   left: "30px",
-                }}
-              >
-                Helix.
-              </Typography>
-              <Box
-                sx={{
-                  display: { xs: "none", sm: "block" },
-                  backgroundColor: "transparent",
-                }}
-              >
-                {navItems.map((item) => (
-                  <Button key={item} sx={{ color: "#666666" }}>
-                    {item}
-                  </Button>
-                ))}
-              </Box>
-            </Box>
-          </Toolbar>
-          <Box sx={{ float: "right" }}>
-            <Button sx={{ backgroundColor: "#212121" }} variant="contained">
+                {item}
+              </Button>
+            ))}
+          </Typography>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button
+              sx={{
+                backgroundColor: "#212121",
+                // padding: "12px, 24px, 12px, 24px",
+                size: "13px",
+                borderRadius: 0,
+                textTransform: "none",
+                fontWeight: "700",
+                height: "44px",
+                width: "100px",
+              }}
+              onClick={() => route.push("/sign-in")}
+              variant="contained"
+            >
               Sign In
             </Button>
             &nbsp;&nbsp;
-            <Button sx={{ backgroundColor: "#4DB6AC" }} variant="contained">
+            <Button
+              sx={{
+                backgroundColor: "#4DB6AC",
+                // padding: "12px, 24px, 12px, 24px",
+                fontWeight: "700",
+                size: "13px",
+                borderRadius: 0,
+                textTransform: "none",
+                height: "44px",
+                width: "100px",
+                mr: 4,
+              }}
+              variant="contained"
+              onClick={() => route.push("/sign-up")}
+            >
               Sign up
             </Button>
+            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            &nbsp;&nbsp;
           </Box>
-        </Box>
+        </Toolbar>
+        {/* </Box> */}
       </AppBar>
       <Box component="nav">
         <Drawer

@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
-import { Box, Button, LinearProgress, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
-import { Label } from "@mui/icons-material";
+import { Label, Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const SignInForm = (props: any) => {
   const { isValid, isSubmitting } = props;
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
     <Form noValidate>
@@ -43,13 +53,38 @@ export const SignInForm = (props: any) => {
           }}
           InputLabelProps={{ shrink: false }}
           component={TextField}
-          type="password"
           name="password"
+          type={showPassword ? "text" : "password"}
+          InputProps={{
+            // <-- This is where the toggle button is added.
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
           // label="Password"
           placeholder="Password"
           fullWidth
           required
         />
+        <Link
+          href="/sign-in/forgot-password"
+          style={{ textDecoration: "none" }}
+        >
+          <Typography
+            align="right"
+            sx={{ color: "#2121218A", fontSize: "12px", fontWeight: "600" }}
+          >
+            Forgot password
+          </Typography>
+        </Link>
       </Box>
 
       {/* {isSubmitting && <LinearProgress />} */}

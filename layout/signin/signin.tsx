@@ -69,7 +69,21 @@ const SigninLayout: React.FC<props> = ({
           >
             <Box>
               <Stack>
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: "800",
+                      height: "17px",
+                      fontSize: "24px",
+                      color: "#fff",
+                      pt: 6,
+                      ml: "27vh",
+                    }}
+                  >
+                    {" "}
+                    Helix.
+                  </Typography>
                   <Typography
                     variant="h5"
                     sx={{
@@ -80,11 +94,7 @@ const SigninLayout: React.FC<props> = ({
                       pt: 6,
                       //   ml: 10,
                     }}
-                  >
-                    {" "}
-                    Helix.
-                  </Typography>
-                  &nbsp;&nbsp;&nbsp;
+                  ></Typography>
                 </Box>
                 <Box
                   sx={{

@@ -40,14 +40,18 @@ const Page: NextPageWithLayout = () => {
         <i>Use your official email address for registration</i>
       </Typography>
       <SignUpFormContainer />
-      <Box sx={{ dispay: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          color: "#2121218A",
+          fontSize: "12px",
+          fontWeight: "600",
+          display: "flex",
+          justifyContent: "center",
+          pt: 3,
+        }}
+      >
         {/* <Box></Box> */}
-        <Typography
-          //   variant="body1"
-          sx={{ color: "#2121218A", fontSize: "12px", fontWeight: "600" }}
-        >
-          Have an account?
-        </Typography>{" "}
+        Have an account? &nbsp;
         <Link href="sign-in" style={{ textDecoration: "none" }}>
           <Typography
             //   variant="body1"
