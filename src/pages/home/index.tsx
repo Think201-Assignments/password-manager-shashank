@@ -26,15 +26,16 @@ const Home = () => {
             pt: "10px",
 
             mt: 4,
-            ml: { sm: 10, md: 16 },
+            ml: { sm: 5, md: 16 },
           }}
         >
           <Typography
             sx={{
-              width: "645px",
-              fontSize: "64px",
+              width: { xs: "420px", sm: "640px", lg: "640px" },
+              fontSize: { xs: "40px", sm: "64px", lg: "64px" },
               fontWeight: "700",
               lineHeight: "70.4px",
+              pl: { xs: 2, sm: 0 },
               color: "#212121",
             }}
           >
@@ -43,9 +44,10 @@ const Home = () => {
           <Typography
             sx={{
               mt: 4,
-              width: "600px",
+              width: { xs: "400px", sm: "600px", lg: "600px" },
               fontWeight: "400",
-              fontSize: "19px",
+              fontSize: { xs: "12px", sm: "19px" },
+              pl: { xs: 2, sm: 0 },
               lineHeight: "30px",
             }}
           >
@@ -57,10 +59,11 @@ const Home = () => {
           <Typography
             sx={{
               mt: 2,
-              width: "600px",
+              width: { xs: "400px", sm: "600px", lg: "600px" },
               fontWeight: "400",
               fontSize: "19px",
               lineHeight: "30px",
+              pl: { xs: 2, sm: 0 },
             }}
           >
             The conceptory was non-sentient software, as ancient as Konishi
@@ -76,6 +79,7 @@ const Home = () => {
                 borderRadius: "0px",
                 height: "48px",
                 width: "202px",
+                pl: { xs: 2, sm: 0 },
                 // padding: "12px, 24px, 12px, 24px",
                 fontWeight: "700",
                 fontSize: "16px",

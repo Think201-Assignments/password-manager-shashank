@@ -41,9 +41,12 @@ const Page: NextPageWithLayout = () => {
                   sx={{ width: "463px" }}
                   id="outlined-basic"
                   placeholder="John@domain.com"
-                  variant="outlined"
+                  // variant="outlined"
+
                   size="small"
                   inputProps={{
+                    notched: false,
+
                     style: {
                       height: "32px",
                       // borderRadius: "0px",
@@ -55,11 +58,13 @@ const Page: NextPageWithLayout = () => {
                   onClick={() =>
                     route.push("/sign-in/forgot-password/reset-password")
                   }
+                  variant="contained"
+                  color="secondary"
                   sx={{
                     mt: 5,
                     height: "49px",
                     width: "463px",
-                    backgroundColor: "#4DB6AC",
+                    
                     color: "#FFFFFF",
                   }}
                 >

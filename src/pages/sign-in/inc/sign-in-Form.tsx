@@ -93,18 +93,22 @@ export const SignInForm = (props: any) => {
         // color={"#2a2f88"}
         sx={{
           mt: 2,
-          background: "#4DB6ACB2",
+          // background: "#4DB6ACB2",
           width: { xs: "363px", sm: "463px", md: "463px", lg: "463px" },
+          color: "#ffff",
           height: "49px",
           borderRadius: 0,
+          fontWeight: "700",
+          textTransform: "none",
+          fontSize: "16px",
         }}
         type="submit"
         fullWidth
         variant="contained"
-        color="primary"
+        color="secondary"
         disabled={!isValid || isSubmitting}
       >
-        Create an account
+        Sign in
       </Button>
     </Form>
   );

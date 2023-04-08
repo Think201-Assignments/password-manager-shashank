@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 import Welcomepagelayout from "../../../layout/welcomepage/welcomepagelayout";
 
@@ -54,21 +55,27 @@ const Welcome = () => {
                   Select your preference
                 </Typography>
                 <Box sx={{ mt: 2 }}>
-                  <Button
-                    sx={{
-                      backgroundColor: "#4DB6AC",
-                      color: "#FFFFFF",
-                      textTransform: "none",
-                      height: "49px",
-                      width: "180px",
-                      borderRadius: "0px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    For Organization
-                  </Button>
+                  <Link style={{ textDecoration: "none" }} href="/organization">
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{
+                        // backgroundColor: "#4DB6AC",
+                        color: "#FFFFFF",
+                        textTransform: "none",
+                        height: "49px",
+                        width: "180px",
+                        borderRadius: "0px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      For Organization
+                    </Button>
+                  </Link>
                   &nbsp;&nbsp;&nbsp;
                   <Button
+                    variant="contained"
+                    // color="secondary"
                     sx={{
                       fontWeight: "600",
                       backgroundColor: "#212121E5",

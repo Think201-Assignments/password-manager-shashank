@@ -12,10 +12,14 @@ export const montserrat = Montserrat({
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#2a2f88",
+      main: "#00000",
+      dark: "#333333",
+      light: "#00000",
     },
     secondary: {
-      main: "#19857b",
+      main: "#4DB6AC",
+      dark: "#212121",
+      light: "#BFBFBF",
     },
     error: {
       main: red.A400,

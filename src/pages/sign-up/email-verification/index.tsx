@@ -69,7 +69,7 @@ const Page: NextPageWithLayout = () => {
         <Button
           sx={{
             mt: 4,
-            backgroundColor: "#4DB6AC",
+            // backgroundColor: "#4DB6AC",
             height: "49px",
             width: "398px",
             textTransform: "none",
@@ -79,6 +79,8 @@ const Page: NextPageWithLayout = () => {
             color: "#fff",
             lineHeight: "19.5px",
           }}
+          color="secondary"
+          variant="contained"
         >
           Verify
         </Button>

@@ -8,23 +8,23 @@ const SideIcons: React.FC<props> = ({ data }) => {
     <>
       <Box
         sx={{
-          height: "50px",
-          width: "50px",
+          height: "48px",
+          width: "48px",
+          background: `url('logo.png')`,
 
           backgroundColor: "white",
 
-          ml: 1,
-          mt: 1,
-          display: "flex",
+          boxShadow: " 0px 4px 34px 0px #00000073",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+
           borderRadius: "15%",
           diplay: "flex",
-          pt: 1.3,
 
           justifyContent: "center",
         }}
       >
-        {data.id}
-        {/* {data[0].id} */}
+        {/* {data.id} */}
       </Box>
     </>
   );

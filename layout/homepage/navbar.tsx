@@ -14,6 +14,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Router, useRouter } from "next/router";
+import { useMediaQuery } from "@mui/material";
+import theme from "@/styles/theme";
 
 interface Props {
   /**
@@ -30,6 +32,8 @@ export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(true);
   const route = useRouter();
+  const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(900));
+  const onlyMediumScreen2 = useMediaQuery(theme.breakpoints.down(720));
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -68,15 +72,36 @@ export default function DrawerAppBar(props: Props) {
         component="nav"
       >
         {/* <Box sx={{ display: "flex", pt: 2, justifyContent: "space-evenly" }}> */}
-        <Toolbar>
+        <Toolbar sx={{ display: "flex" }}>
           <IconButton
             // color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{
+              // mr: 2,
+              display: { display: onlyMediumScreen2 ? "block" : "none" },
+            }}
           >
             <MenuIcon sx={{ color: "#000" }} />
+
+            {/* <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                display: {
+                  // xs: "none",
+
+                  // sm: !onlyMediumScreen2 ? "block" : "none",
+                  fontSize: "28px",
+                  fontWeight: "800",
+                  color: "#1B847A",
+                },
+              }}
+            >
+              Helix.
+            </Typography> */}
           </IconButton>
           {/* <Box component="div">dfdfsfd</Box> */}
 
@@ -86,29 +111,45 @@ export default function DrawerAppBar(props: Props) {
             sx={{
               flexGrow: 1,
               display: {
+                // xs: "none",
                 xs: "none",
-                sm: "block",
+                sm: !onlyMediumScreen2 ? "block" : "none",
                 fontSize: "28px",
                 fontWeight: "800",
                 color: "#1B847A",
               },
             }}
           >
-            <Box></Box>
-            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;Helix. &nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+            {!onlyMediumScreen && <>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>}
+            Helix. &nbsp;
+            {/* <Box> */}
             {navItems.map((item) => (
               <Button
                 key={item}
-                sx={{ color: "#666666", mx: 1, textTransform: "none" }}
+                sx={{
+                  color: "#666666",
+                  mx: !onlyMediumScreen ? 1 : 0,
+                  textTransform: "none",
+                }}
               >
                 {item}
               </Button>
             ))}
+            {/* </Box> */}
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                sm: !onlyMediumScreen2 ? "block" : "none",
+              },
+            }}
+          >
             <Button
               sx={{
                 backgroundColor: "#212121",
+                color: "white",
                 // padding: "12px, 24px, 12px, 24px",
                 size: "13px",
                 borderRadius: 0,
@@ -126,6 +167,7 @@ export default function DrawerAppBar(props: Props) {
             <Button
               sx={{
                 backgroundColor: "#4DB6AC",
+                color: "white",
                 // padding: "12px, 24px, 12px, 24px",
                 fontWeight: "700",
                 size: "13px",
@@ -140,7 +182,11 @@ export default function DrawerAppBar(props: Props) {
             >
               Sign up
             </Button>
-            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            {!onlyMediumScreen && (
+              <>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+              </>
+            )}
             &nbsp;&nbsp;
           </Box>
         </Toolbar>
@@ -156,7 +202,8 @@ export default function DrawerAppBar(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: onlyMediumScreen2 ? "block" : "none",
+
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -168,40 +215,6 @@ export default function DrawerAppBar(props: Props) {
       </Box>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        {/* <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
-          fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
-          aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
-          cum quibusdam sed quae, accusantium et aperiam? Quod itaque exercitationem,
-          at ab sequi qui modi delectus quia corrupti alias distinctio nostrum.
-          Minima ex dolor modi inventore sapiente necessitatibus aliquam fuga et. Sed
-          numquam quibusdam at officia sapiente porro maxime corrupti perspiciatis
-          asperiores, exercitationem eius nostrum consequuntur iure aliquam itaque,
-          assumenda et! Quibusdam temporibus beatae doloremque voluptatum doloribus
-          soluta accusamus porro reprehenderit eos inventore facere, fugit, molestiae
-          ab officiis illo voluptates recusandae. Vel dolor nobis eius, ratione atque
-          soluta, aliquam fugit qui iste architecto perspiciatis. Nobis, voluptatem!
-          Cumque, eligendi unde aliquid minus quis sit debitis obcaecati error,
-          delectus quo eius exercitationem tempore. Delectus sapiente, provident
-          corporis dolorum quibusdam aut beatae repellendus est labore quisquam
-          praesentium repudiandae non vel laboriosam quo ab perferendis velit ipsa
-          deleniti modi! Ipsam, illo quod. Nesciunt commodi nihil corrupti cum non
-          fugiat praesentium doloremque architecto laborum aliquid. Quae, maxime
-          recusandae? Eveniet dolore molestiae dicta blanditiis est expedita eius
-          debitis cupiditate porro sed aspernatur quidem, repellat nihil quasi
-          praesentium quia eos, quibusdam provident. Incidunt tempore vel placeat
-          voluptate iure labore, repellendus beatae quia unde est aliquid dolor
-          molestias libero. Reiciendis similique exercitationem consequatur, nobis
-          placeat illo laudantium! Enim perferendis nulla soluta magni error,
-          provident repellat similique cupiditate ipsam, et tempore cumque quod! Qui,
-          iure suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
-          Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore commodi
-          reprehenderit rerum reiciendis! Quidem alias repudiandae eaque eveniet
-          cumque nihil aliquam in expedita, impedit quas ipsum nesciunt ipsa ullam
-          consequuntur dignissimos numquam at nisi porro a, quaerat rem repellendus.
-          Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
-          dolores sunt inventore perferendis, aut sapiente modi nesciunt.
-        </Typography> */}
       </Box>
     </Box>
   );

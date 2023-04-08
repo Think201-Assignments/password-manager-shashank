@@ -9,7 +9,7 @@ import { validationSchema } from "./validation";
 
 // interface props {
 //   handleClose: Function;
-// }
+// }700
 
 const SignUpFormContainer = () => {
   const handleSubmit = (values: any, actions: any) => {

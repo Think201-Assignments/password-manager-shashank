@@ -107,11 +107,14 @@ export const SignUpForm = (props: any) => {
         onClick={() => route.push("/sign-up/email-verification")}
         sx={{
           mt: 2,
-          background: "#4DB6ACB2",
+          // background: "#4DB6ACB2",
           width: { xs: "363px", sm: "463px", md: "463px", lg: "463px" },
           fontWeight: "700",
           height: "49px",
+          fontSize: "16px",
           borderRadius: 0,
+          color: "#ffff",
+          textTransform: "none",
         }}
         type="submit"
         fullWidth
