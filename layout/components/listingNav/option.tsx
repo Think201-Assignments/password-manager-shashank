@@ -27,7 +27,7 @@ const Options: React.FC<props> = ({
   const a = route.pathname;
   return (
     <ListItem
-      key={text}
+      key={index}
       sx={{
         backgroundColor: select == text ? "rgba(60, 16, 83, 0.06)" : null,
       }}
@@ -35,10 +35,10 @@ const Options: React.FC<props> = ({
       disablePadding
     >
       {/* <Link href={`${baselink}/${text}`}> */}
-      <ListItemButton key={text} onClick={() => stateSetter(text)}>
-        <ListItemIcon key={text}>
+      <ListItemButton key={index} onClick={() => stateSetter(text)}>
+        <ListItemIcon key={index}>
           {" "}
-          <Avatar key={text} sx={{ bgcolor: match.color }}>
+          <Avatar key={index} sx={{ bgcolor: match.color }}>
             {text.charAt(0)}
           </Avatar>
         </ListItemIcon>

@@ -46,9 +46,8 @@ const CorrectionListingNav: React.FC<props> = ({
     condition && setCondition(false);
     setPassword(allpassword);
     setSelect(allpassword[0].text);
-    setTimeout(() => {
-      setCondition(true);
-    }, 1000);
+
+    setCondition(true);
   }, [reload]);
   const router = useRouter();
   const { companyId, category } = router.query;
@@ -121,10 +120,7 @@ const CorrectionListingNav: React.FC<props> = ({
               : category + " " + "Password"}
           </Typography>
         </Box>
-        <List
-          sx={{ height: "79vh", overflowY: "auto", overflowX: "hidden" }}
-          key={1}
-        >
+        <List sx={{ height: "79vh", overflowY: "auto", overflowX: "hidden" }}>
           {/* {(category == "all-password" ? allpassword : design) */}
 
           {password
@@ -141,12 +137,14 @@ const CorrectionListingNav: React.FC<props> = ({
               <>
                 {condition ? (
                   <Link
+                    key={index}
                     style={{ textDecoration: "none" }}
                     href={`/${companyId}/${category}/${
                       data.text[0].toLowerCase() + data.text.slice(1)
                     }`}
                   >
                     <Options
+                      key={index}
                       select={select}
                       text={data.text}
                       index={index}
@@ -159,6 +157,7 @@ const CorrectionListingNav: React.FC<props> = ({
                   <>
                     {" "}
                     <Skeleton
+                      key={index}
                       variant="rectangular"
                       sx={{ ml: 2, mb: 2 }}
                       width={210}

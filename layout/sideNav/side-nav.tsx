@@ -21,7 +21,7 @@ const SideNav: React.FC<props> = ({ children }) => {
       logo: "<AcUnitIcon />",
     },
   ];
-
+  const a = "logo.png";
   return (
     <Box sx={{ height: "100vh", display: "flex" }}>
       <Box
@@ -53,16 +53,24 @@ const SideNav: React.FC<props> = ({ children }) => {
 
           <List sx={{ pt: 0 }}>
             {list.map((data, index) => (
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <Link style={{ textDecoration: "none" }} href={`/${data.name}`}>
+              <Box
+                sx={{ display: "flex", justifyContent: "center" }}
+                key={index}
+              >
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href={`/${data.name}`}
+                  key={index}
+                >
                   <Button
+                    key={index}
                     sx={{
                       height: "48px",
                       width: "48px",
                       mt: 3,
                     }}
                   >
-                    <SideIcons data={data} />
+                    <SideIcons a={a} data={data} key={index} />
                   </Button>
                 </Link>
               </Box>

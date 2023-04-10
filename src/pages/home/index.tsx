@@ -6,6 +6,7 @@ import DrawerAppBar from "../../../layout/homepage/navbar";
 
 const Home = () => {
   const router = useRouter();
+
   return (
     <>
       <Box
@@ -31,12 +32,12 @@ const Home = () => {
         >
           <Typography
             sx={{
-              width: { xs: "420px", sm: "640px", lg: "640px" },
+              maxWidth: { xs: "420px", sm: "650px", lg: "650px" },
               fontSize: { xs: "40px", sm: "64px", lg: "64px" },
               fontWeight: "700",
               lineHeight: "70.4px",
-              pl: { xs: 2, sm: 0 },
-              color: "#212121",
+              ml: { xs: 4, sm: 0 },
+              color: { xs: "#fff", sm: "#212121", lg: "#212121" },
             }}
           >
             The ultimate password manager for organisations
@@ -44,10 +45,12 @@ const Home = () => {
           <Typography
             sx={{
               mt: 4,
-              width: { xs: "400px", sm: "600px", lg: "600px" },
-              fontWeight: "400",
-              fontSize: { xs: "12px", sm: "19px" },
+              maxWidth: { xs: "400px", sm: "600px", lg: "600px" },
+              fontWeight: { xs: "550", sm: "400", lg: "400" },
+              fontSize: { xs: "14px", sm: "19px" },
               pl: { xs: 2, sm: 0 },
+              ml: { xs: 2, sm: 0 },
+              color: { xs: "	#808080", sm: "#212121", lg: "#212121" },
               lineHeight: "30px",
             }}
           >
@@ -59,10 +62,12 @@ const Home = () => {
           <Typography
             sx={{
               mt: 2,
-              width: { xs: "400px", sm: "600px", lg: "600px" },
-              fontWeight: "400",
-              fontSize: "19px",
+              maxWidth: { xs: "400px", sm: "600px", lg: "600px" },
+              fontWeight: { xs: "700", sm: "400", lg: "400" },
+              color: { xs: "	#ffff", sm: "#212121", lg: "#212121" },
+              fontSize: { xs: "14px", sm: "19px", lg: "19px" },
               lineHeight: "30px",
+              ml: { xs: 4, sm: 0 },
               pl: { xs: 2, sm: 0 },
             }}
           >
@@ -70,7 +75,7 @@ const Home = () => {
             &nbsp; polis itself.
           </Typography>
 
-          <Box sx={{ mt: 5 }}>
+          <Box sx={{ mt: 5, ml: { xs: 4, sm: 0 } }}>
             <Button
               sx={{
                 textTransform: "none",

@@ -1,4 +1,4 @@
-import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 
 import { NextPageWithLayout } from "@/pages/_app";
@@ -26,13 +26,12 @@ const Page: NextPageWithLayout = () => {
   useEffect(() => {
     condition && setCondition(false);
     action;
-    setTimeout(() => {
-      setCondition(true);
-      if (action) {
-        reload ? setReloadAction(false) : setReloadAction(true);
-      }
-      setActionState(false);
-    }, 1000);
+
+    setCondition(true);
+    if (action) {
+      reload ? setReloadAction(false) : setReloadAction(true);
+    }
+    setActionState(false);
   }, [listingdata]);
 
   return (
@@ -66,23 +65,16 @@ const Page: NextPageWithLayout = () => {
 };
 //We will get specific
 Page.getLayout = function getLayout(page: ReactElement) {
-  const router = useRouter();
-
-  const theme = useTheme();
-  const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-
   return (
     <>
       <Box sx={{ display: "flex" }}>
         {" "}
-        {!onlyMediumScreen && (
-          <>
-            <SideNav />
+        <>
+          <SideNav />
 
-            <CorrectionVaultNav />
-            <CorrectionListingNav selectspecific={undefined} />
-          </>
-        )}
+          <CorrectionVaultNav />
+          <CorrectionListingNav selectspecific={undefined} />
+        </>
         <ContentNav>{page}</ContentNav>
       </Box>
     </>

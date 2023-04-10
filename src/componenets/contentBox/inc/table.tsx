@@ -60,7 +60,7 @@ const DataTable: React.FC<props> = ({ tableData }) => {
           <TableCell key={"loginData"} align="left">
             {tableData?.login}
           </TableCell>
-          <TableCell key="login" align="right">
+          <TableCell key="login123" align="right">
             {" "}
             <IconButton onClick={() => handleClick(tableData?.login)}>
               {" "}
@@ -223,8 +223,12 @@ const DataTable: React.FC<props> = ({ tableData }) => {
             tags
           </TableCell>
           <TableCell align="left">
-            {tableData?.tags?.map((d: any) => (
-              <Chip sx={{ mx: 0.5, borderRadius: "4px" }} label={d} />
+            {tableData?.tags?.map((d: any, index: any) => (
+              <Chip
+                sx={{ mx: 0.5, borderRadius: "4px" }}
+                key={index}
+                label={d}
+              />
             ))}
           </TableCell>
           <TableCell align="right"></TableCell>

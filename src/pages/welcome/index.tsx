@@ -55,7 +55,10 @@ const Welcome = () => {
                   Select your preference
                 </Typography>
                 <Box sx={{ mt: 2 }}>
-                  <Link style={{ textDecoration: "none" }} href="/organization">
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    href="/organization/company-team"
+                  >
                     <Button
                       variant="contained"
                       color="secondary"

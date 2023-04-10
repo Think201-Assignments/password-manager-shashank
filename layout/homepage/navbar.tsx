@@ -84,26 +84,7 @@ export default function DrawerAppBar(props: Props) {
             }}
           >
             <MenuIcon sx={{ color: "#000" }} />
-
-            {/* <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                flexGrow: 1,
-                display: {
-                  // xs: "none",
-
-                  // sm: !onlyMediumScreen2 ? "block" : "none",
-                  fontSize: "28px",
-                  fontWeight: "800",
-                  color: "#1B847A",
-                },
-              }}
-            >
-              Helix.
-            </Typography> */}
           </IconButton>
-          {/* <Box component="div">dfdfsfd</Box> */}
 
           <Typography
             variant="h6"

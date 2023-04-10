@@ -2,6 +2,7 @@ import StepHeader from "@/componenets/organization/stepheader";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import React from "react";
 import { parseJsonText } from "typescript";
+import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 
 interface props {
   heading?: any;
@@ -9,6 +10,8 @@ interface props {
   buttonfunction?: any;
   buttonText?: any;
   children?: React.ReactNode;
+  buttonIcons?: React.ReactElement;
+  sxbuttontext?: any;
   step?: any;
 }
 
@@ -16,7 +19,9 @@ const StepCreator: React.FC<props> = ({
   buttonfunction,
   subheading,
   heading,
+  buttonIcons,
   buttonText,
+  sxbuttontext,
   children,
   step,
 }) => {
@@ -33,18 +38,26 @@ const StepCreator: React.FC<props> = ({
         <Button
           variant="contained"
           color="secondary"
-          sx={{
-            mt: 4,
-            //   backgroundColor: "#4DB6AC",
-            borderRadius: "0px",
-            height: "50px",
-            width: "488px",
-            color: "white",
-            fontSize: "15px",
-            fontWeight: "700",
-          }}
+          sx={
+            sxbuttontext
+              ? {
+                  ...sxbuttontext,
+                }
+              : {
+                  mt: 4,
+                  //   backgroundColor: "#4DB6AC",
+                  textTransform: "none",
+                  borderRadius: "0px",
+                  height: "50px",
+                  width: "488px",
+                  color: "white",
+                  fontSize: "15px",
+                  fontWeight: "700",
+                }
+          }
           onClick={() => buttonfunction()}
         >
+          {buttonIcons}
           {buttonText}
         </Button>
       </Stack>

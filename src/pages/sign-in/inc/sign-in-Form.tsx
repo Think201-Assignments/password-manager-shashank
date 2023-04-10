@@ -31,7 +31,7 @@ export const SignInForm = (props: any) => {
           sx={{
             mb: 2,
           }}
-          InputLabelProps={{ shrink: false }}
+          // InputLabelProps={{ shrink: " false " }}
           component={TextField}
           type="email"
           name="email"
@@ -51,7 +51,7 @@ export const SignInForm = (props: any) => {
           sx={{
             mb: 2,
           }}
-          InputLabelProps={{ shrink: false }}
+          // InputLabelProps={{ shrink: "false" }}
           component={TextField}
           name="password"
           type={showPassword ? "text" : "password"}

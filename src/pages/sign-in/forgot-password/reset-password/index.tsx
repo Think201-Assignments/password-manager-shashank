@@ -59,7 +59,7 @@ const Page: NextPageWithLayout = () => {
                     style: {
                       height: "32px",
                     },
-                    shrink: false,
+                    shrink: "false",
                   }}
                   type={showPassword ? "text" : "password"}
                   InputProps={{
@@ -115,7 +115,7 @@ const Page: NextPageWithLayout = () => {
                     style: {
                       height: "32px",
                     },
-                    shrink: false,
+                    shrink: "false",
                   }}
                 />
                 <Button

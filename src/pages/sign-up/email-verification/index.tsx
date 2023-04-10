@@ -1,11 +1,10 @@
-import GoogleSignInSignUpCustomButtom from "@/componenets/SignIn-Signup/googleSignInCustomButtom";
 import { NextPageWithLayout } from "@/pages/_app";
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import React, { ReactElement, useState } from "react";
 import CustomTypographyListView from "../../../../layout/components/signin/customTypographyListView";
 import SigninLayout from "../../../../layout/signin/signin";
-import SignUpFormContainer from "../inc/form/sign-up-Form-Integeration";
+
 import OtpInput from "react-otp-input";
 
 const Page: NextPageWithLayout = () => {
@@ -50,15 +49,12 @@ const Page: NextPageWithLayout = () => {
           fontSize: "12px",
           fontWeight: "600",
           display: "flex",
-          //   justifyContent: "center",
           pt: 1,
         }}
       >
-        {/* <Box></Box> */}
-        Didn't receive code? &nbsp;
+        Didn&apos;t receive code?&nbsp;
         <Link href="sign-in" style={{ textDecoration: "none" }}>
           <Typography
-            //   variant="body1"
             sx={{ color: "#4DB6AC", fontSize: "12px", fontWeight: "600" }}
           >
             Resend
@@ -69,7 +65,6 @@ const Page: NextPageWithLayout = () => {
         <Button
           sx={{
             mt: 4,
-            // backgroundColor: "#4DB6AC",
             height: "49px",
             width: "398px",
             textTransform: "none",
@@ -109,12 +104,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
   );
   return (
     <>
-      <SigninLayout
-        // sigin={true}
-        Display={Display}
-        heading={"Verify your email"}
-        // subHeading={"Please select an option to continue to your account"}
-      >
+      <SigninLayout Display={Display} heading={"Verify your email"}>
         {page}
       </SigninLayout>
     </>

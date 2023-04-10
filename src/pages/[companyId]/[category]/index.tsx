@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 
 import PageWrapper from "@/componenets/animate/page-wrapper";
@@ -32,21 +32,16 @@ const Page: NextPageWithLayout = () => {
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
-  const theme = useTheme();
-  const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-
   return (
     <>
       <Box sx={{ display: "flex" }}>
         {" "}
-        {!onlyMediumScreen && (
-          <>
-            <SideNav />
+        <>
+          <SideNav />
 
-            <CorrectionVaultNav />
-            <CorrectionListingNav selectspecific={undefined} />
-          </>
-        )}
+          <CorrectionVaultNav />
+          <CorrectionListingNav selectspecific={undefined} />
+        </>
         {/* <m.main
           initial={{ x: "100%" }}
           animate={{ x: "0%" }}

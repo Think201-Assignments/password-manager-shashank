@@ -123,8 +123,6 @@ const CorrectionVaultNav: React.FC<props> = ({ Vaultheading }) => {
             <Typography
               sx={{
                 mt: 3,
-                // pb: 3,
-                // mb: 2,
                 fontSize: "12px",
                 fontWeight: "700",
                 color: "#00000054",
@@ -137,16 +135,7 @@ const CorrectionVaultNav: React.FC<props> = ({ Vaultheading }) => {
               <AddCircleOutlineIcon />
             </IconButton>
           </Box>
-          {/* <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-          > */}
+
           {open && (
             <Box sx={{ display: "flex", p: 0.7 }}>
               <TextField
@@ -170,10 +159,9 @@ const CorrectionVaultNav: React.FC<props> = ({ Vaultheading }) => {
               </IconButton>
             </Box>
           )}
-          {/* </Popover> */}
           <List>
             {department.map((data: any, index: any) => (
-              <VaultOptions index={index} data={data} />
+              <VaultOptions index={index} key={index} data={data} />
             ))}
           </List>
           <Box sx={{ pl: 4 }}>
@@ -192,7 +180,7 @@ const CorrectionVaultNav: React.FC<props> = ({ Vaultheading }) => {
           <List>
             {[{ text: "Design", link: `/${companyId}/all-password` }].map(
               (data: any, index: any) => (
-                <VaultOptions index={index} data={data} />
+                <VaultOptions key={index} index={index} data={data} />
               )
             )}
           </List>

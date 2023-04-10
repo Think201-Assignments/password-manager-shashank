@@ -45,13 +45,11 @@ const Page: NextPageWithLayout = () => {
 
                   size="small"
                   inputProps={{
-                    notched: false,
-
                     style: {
                       height: "32px",
                       // borderRadius: "0px",
                     },
-                    shrink: false,
+                    shrink: "false",
                   }}
                 />
                 <Button
@@ -64,7 +62,7 @@ const Page: NextPageWithLayout = () => {
                     mt: 5,
                     height: "49px",
                     width: "463px",
-                    
+
                     color: "#FFFFFF",
                   }}
                 >

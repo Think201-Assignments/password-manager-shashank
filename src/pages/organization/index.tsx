@@ -1,15 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  InputAdornment,
-  OutlinedInput,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 
 import PageWrapper from "@/componenets/animate/page-wrapper";
@@ -47,8 +36,6 @@ const Page: NextPageWithLayout = () => {
             placeholder="John@domain.com"
             size="small"
             inputProps={{
-              notched: false,
-
               style: {
                 height: "32px",
               },
@@ -121,20 +108,15 @@ const Page: NextPageWithLayout = () => {
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
-  const theme = useTheme();
-  const onlyMediumScreen = useMediaQuery(theme.breakpoints.down(1370));
-
   return (
     <>
       <Box sx={{ display: "flex" }}>
         {" "}
-        {!onlyMediumScreen && (
-          <>
-            <SideNav />
+        <>
+          <SideNav />
 
-            <CorrectionVaultNav />
-          </>
-        )}
+          <CorrectionVaultNav />
+        </>
         <PageWrapper>{page}</PageWrapper>
       </Box>
     </>

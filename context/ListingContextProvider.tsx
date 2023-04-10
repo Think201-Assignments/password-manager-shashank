@@ -75,7 +75,7 @@ const ListingContextProvider = ({ children }: IProps) => {
       color: "",
     },
   ]);
-  const addProduct = (data: Product) => {
+  const addProduct = (data: any) => {
     data.id = listing.length;
     setProducts([...listing, data]);
   };

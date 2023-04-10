@@ -32,14 +32,10 @@ export const SignUpForm = (props: any) => {
         <Field
           sx={{
             mb: 2,
-            notched: false,
-            lable: null,
           }}
-          InputLabelProps={{ shrink: false }}
           component={TextField}
           type=""
           name="fullname"
-          // label="eg.Jhon"
           placeholder="eg.Jhon"
           fullWidth
           required
@@ -56,10 +52,8 @@ export const SignUpForm = (props: any) => {
             mb: 2,
           }}
           component={TextField}
-          InputLabelProps={{ shrink: false }}
           type="email"
           name="email"
-          // label="user@domain.com"
           placeholder="user@domain.com"
           fullWidth
           required
@@ -75,7 +69,6 @@ export const SignUpForm = (props: any) => {
           sx={{
             mb: 2,
           }}
-          InputLabelProps={{ shrink: false }}
           component={TextField}
           name="password"
           type={showPassword ? "text" : "password"}
@@ -93,7 +86,6 @@ export const SignUpForm = (props: any) => {
               </InputAdornment>
             ),
           }}
-          // label="Password"
           placeholder="password"
           fullWidth
           required
@@ -107,7 +99,7 @@ export const SignUpForm = (props: any) => {
         onClick={() => route.push("/sign-up/email-verification")}
         sx={{
           mt: 2,
-          // background: "#4DB6ACB2",
+
           width: { xs: "363px", sm: "463px", md: "463px", lg: "463px" },
           fontWeight: "700",
           height: "49px",
@@ -119,7 +111,7 @@ export const SignUpForm = (props: any) => {
         type="submit"
         fullWidth
         variant="contained"
-        color="primary"
+        color="secondary"
         disabled={!isValid || isSubmitting}
       >
         Create an account
